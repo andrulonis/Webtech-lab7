@@ -33,6 +33,16 @@ strong {
   color: goldenrod;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  transition: 200ms;
+  color: blue;
+}
+
 .navbar {
   list-style-type: none;
   display: flex;
