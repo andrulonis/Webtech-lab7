@@ -74,3 +74,5 @@ vertical-align,
 :hover, 
 :active, 
 :focus
+
+DOUBLE QUOTES AND NOT SINGLE QUOTES
