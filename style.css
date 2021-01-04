@@ -1,3 +1,12 @@
 h1 {
   font-size: 50px;
 }
+
+table, th, td {
+  border: 1px solid black;
+  background-color: gold;
+}
+
+img {
+  max-height: 100px;
+}
