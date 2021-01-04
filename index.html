@@ -21,63 +21,74 @@ Include a table showing the specifications of some top selling products of your 
   </head>
 
   <body>
-    <h1>Bedrunka</h1>
-    <h2>Be yourself. Bedrunka.</h2>
-    <nav></nav>
-
-    <section></section>
+    <header>
+      <div class="logo">
+        <h1>Bedrunka</h1>
+        <h2>Be yourself. <strong>Bedrunka.</strong></h2>
+      </div>
+      <nav>
+        <ul class="navbar">
+          <li>Home</li>
+          <li>Products</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
 
     <!-- Table (WE NEED ANOTHER TABLE) -->
-    <h2>Featured Products</h2>
-    <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
-      <table>
-        <tr>
-          <th>product</th>
-          <th>origin</th>
-          <th>best_before_date</th>
-          <th>amount</th>
-          <th>image location</th>
-        </tr>
-        <tr>
-          <td>Noodles</td>
-          <td>Vietnam</td>
-          <td>June 2022</td>
-          <td>23</td>
-          <td>
-            <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png">
-          </td>
-        </tr>
-        <tr>
-          <td>Noodles</td>
-          <td>Vietnam</td>
-          <td>Jun 22 2022</td>
-          <td>23</td>
-          <td>
-            <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png">
-          </td>
-        </tr>
-        <tr>
-          <td>Noodles</td>
-          <td>Vietnam</td>
-          <td>Jun 22 2022</td>
-          <td>23</td>
-          <td>
-            <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png">
-          </td>
-        </tr>
-        <tr>
-          <td><input></td>
-          <td><input></td>
-          <td><input type="date"></td>
-          <td><input type="number"></td>
-          <td><input></td>
-        </tr>
-        <tr>
-          <td colspan="5">
-            <button type="submit">Hello</button>
-          </td>
-        </tr>
-      </table>
-    </form>
+    <section>
+      <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
+        <table>
+          <caption>Featured Products</caption>
+          <tr>
+            <th>product</th>
+            <th>origin</th>
+            <th>best_before_date</th>
+            <th>amount</th>
+            <th>image location</th>
+          </tr>
+          <tr>
+            <td>Noodles</td>
+            <td>Vietnam</td>
+            <td>June 2022</td>
+            <td>23</td>
+            <td>
+              <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png">
+            </td>
+          </tr>
+          <tr>
+            <td>Noodles</td>
+            <td>Vietnam</td>
+            <td>Jun 22 2022</td>
+            <td>23</td>
+            <td>
+              <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png">
+            </td>
+          </tr>
+          <tr>
+            <td>Noodles</td>
+            <td>Vietnam</td>
+            <td>Jun 22 2022</td>
+            <td>23</td>
+            <td>
+              <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png">
+            </td>
+          </tr>
+          <tr>
+            <td><input required></td>
+            <td><input required></td>
+            <td><input type="date" required></td>
+            <td><input type="number" required></td>
+            <td><input required></td>
+          </tr>
+          <tr>
+            <td colspan="5">
+              <button type="submit">Hello</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
   </body>
 </html>
