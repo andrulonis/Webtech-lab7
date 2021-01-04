@@ -2,13 +2,13 @@
 Andrzej Kominek &amp; Alex Lushiku
 
 HTML to use:
-html, 
-head, 
-title, 
-body, 
-nav,
-section, 
-h1, 
+html+ 
+head+ 
+title+ 
+body+
+nav+
+section+
+h1,
 h2, 
 p,
 ul, 
@@ -29,6 +29,8 @@ strong,
 pre,
 abbr,
 type in input with required
+
+
 
 CSS to use:
 margin-top, 
