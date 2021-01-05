@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <title>Home - Bedrunka</title>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,16 +17,15 @@
       <nav>
         <ul class="navbar">
           <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#featured">Featured</a></li>
+          <li><a href="#employees">Employees</a></li>
+          <li><a href="#about">About</a></li>
         </ul>
       </nav>
       <div id="header"></div>
     </header>
 
-    <!-- Table (WE NEED ANOTHER TABLE) -->
-    <section>
+    <section id="featured">
       <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
         <table>
           <caption>Featured Products</caption>
@@ -81,7 +79,7 @@
       </form>
     </section>
 
-    <section>
+    <section id="employees">
       <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
         <table>
           <caption>Employees of the Year</caption>
@@ -130,17 +128,17 @@
       </form>
     </section>
 
-    <section>
+    <section id="about">
       <h3>About Us</h3>
+      <p>Bedrunka is the <em>biggest</em> international supermarket selling all kinds of food and drinks.</p> 
+      <p>But did you know Bedrunka also sells recipes?</p> 
+      <p>Here's how you make Noodles:</p>
       <pre>
-        <p>Bedrunka is the <em>biggest</em> international supermarket selling all kinds of food and drinks.</p> 
-        <p>But did you know Bedrunka also sells recipes?</p> 
-        <p>Here's how you make Noodles:</p>
+        <dl>
+          <dt>Ingredients</dt>
+          <dd>Soba Noodles (<abbr>NDLS</abbr>)</dd>
+        </dl>
       </pre>
-      <dl>
-        <dt>Ingredients</dt>
-        <dd>Soba Noodles (<abbr>NDLS</abbr>)</dd>
-      </dl>
       <h4>Steps</h4>
       <ol>
         <li>Put hot water in Noodles</li>
@@ -148,10 +146,13 @@
         <li>Mix with ingredients</li>
         <li>Done!</li>
       </ol>
+    </section>
+
+    <footer>
       <figure>
         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.forum-betrieb.de%2Fimages%2Fforumbetrieb%2Fbedrunka-hirth_logo_2018.jpg&f=1&nofb=1">
         <figcaption>Our parent company</figcaption>
       </figure>
-    </section>
+    </footer>
   </body>
 </html>
