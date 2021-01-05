@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home - Bedrunka</title>
+    <title>Store - Bedrunka</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,17 +16,17 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#featured">Featured</a></li>
-          <li><a href="#employees">Employees</a></li>
-          <li><a href="#about">About</a></li>
+          <a href="#"><li>Home</li></a>
+          <a href="#featured"><li>Featured</li></a>
+          <a href="#employees"><li>Employees</li></a>
+          <a href="#about"><li>About</li></a>
         </ul>
       </nav>
     </header>
     <div id="hero"></div>
 
     <section id="featured">
-      <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
+      <div>
         <table>
           <caption>Featured Products</caption>
           <tr>
@@ -63,100 +63,95 @@
               <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png">
             </td>
           </tr>
+          <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
+            <tr>
+              <td><input name="product" id="product" type="text" required></td>
+              <td><input name="origin" id="origin" type="text" required></td>
+              <td><input name="best_before_date" id="best_before_date" type="date" required></td>
+              <td><input name="amount" id="amount" type="number" min="0" required></td>
+              <td><input name="image" id="image" type="url" required></td>
+            </tr>
+            <tr>
+              <td colspan="5">
+                <button type="submit">Add Product</button>
+              </td>
+            </tr>
+          </form>
+        </table>
+      </div>
+    </section>
+
+      <!-- INPUT PHOTOS OF EMPLOYEES, ADD MOBILE STUFF, ADD COMPATIBILITY REPORT -->
+    <section id="employees">
+      <div>
+        <table>
+          <caption>Employees of the Year</caption>
           <tr>
-            <td><input name="product" id="product" type="text" required></td>
-            <td><input name="origin" id="origin" type="text" required></td>
-            <td><input name="best_before_date" id="best_before_date" type="date" required></td>
-            <td><input name="amount" id="amount" type="number" min="0" required></td>
-            <td><input name="image" id="image" type="url" required></td>
+            <th>Name</th>
+            <th>Month</th>
+            <th>Streak</th>
+            <th>Image</th>
           </tr>
           <tr>
-            <td colspan="5">
-              <button type="submit">Add Product</button>
+            <td>Alex</td>
+            <td>January, 2021</td>
+            <td>1</td>
+            <td>
+              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
+            </td>
+          </tr>
+          <tr>
+            <td>Andrzej</td>
+            <td>December, 2020</td>
+            <td>3</td>
+            <td>
+              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
+            </td>
+          </tr>
+          <tr>
+            <td>Eduart</td>
+            <td>September, 2020</td>
+            <td>2</td>
+            <td>
+              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
             </td>
           </tr>
         </table>
-      </form>
-    </section>
-      <!-- INPUT PHOTOS OF EMPLOYEES, ADD MOBILE STUFF, ADD COMPATIBILITY REPORT -->
-    <section id="employees">
-      <table>
-        <caption>Employees of the Year</caption>
-        <tr>
-          <th>Name</th>
-          <th>Month</th>
-          <th>Streak</th>
-          <th>Image</th>
-        </tr>
-        <tr>
-          <td>Andrzej</td>
-          <td>December, 2020</td>
-          <td>3</td>
-          <td>
-            <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
-          </td>
-        </tr>
-        <tr>
-          <td>Alex</td>
-          <td>January, 2021</td>
-          <td>1</td>
-          <td>
-            <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
-          </td>
-        </tr>
-        <tr>
-          <td>Eduart</td>
-          <td>September, 2020</td>
-          <td>2</td>
-          <td>
-            <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
-          </td>
-        </tr>
-      </table>
+      </div>
     </section>
 
     <section id="about">
       <h3>About Us</h3>
-      <pre>
-                .--------._
-                (`--'       `-.
-                `.______      `.
-              ___________`__     \
-          ,-'           `-.\     |
-          //                \|    |\
-        (`  .'~~~~~---\     \'   | |
-          `-'           )     \   | |
-            ,---------' - -.  `  . '
-          ,'             `%`\`     |
-          /                      \  |
-        /     \-----.         \    `
-        /|  ,_/      '-._            |
-        (-'  /           /            `     <abbr>JBLL</abbr>
-        ,`--<           |        \     \
-        \ |  \         /%%             `\
-        |/   \____---'--`%        \     \
-        |    '           `               \
-        |
-        `--.__
-              `---._______
-                          `.
-                            \
-      </pre>
       <div>
-        <p>Bedrunka is the <em>biggest</em> international supermarket selling all kinds of food and drinks.</p> 
-        <p>But did you know Bedrunka also sells recipes?</p> 
-        <p>Here"s how you make Noodles:</p>
-        <dl>
-          <dt>Ingredients</dt>
-          <dd>Soba Noodles (<abbr>NDLS</abbr>)</dd>
-        </dl>
-        <h4>Steps</h4>
-        <ol>
-          <li>Put hot water in Noodles</li>
-          <li>Pour out water</li>
-          <li>Mix with ingredients</li>
-          <li>Done!</li>
-        </ol>
+        <div>
+          <p>Bedrunka is the <em>biggest</em> international supermarket selling all kinds of food and drinks.</p> 
+          <p>But did you know Bedrunka also sells recipes?</p> 
+          <p>Here's how you make Noodles:</p>
+          <dl>
+            <dt><b>Ingredients</b></dt>
+            <dd>Soba Noodles</dd>
+          </dl>
+          <h4>Steps</h4>
+          <ol>
+            <li>Put hot water in Noodles</li>
+            <li>Pour out water</li>
+            <li>Mix with ingredients</li>
+            <li>Done!</li>
+          </ol>
+        </div>
+        <pre>
+          (\
+          \ \
+      __    \/ ___,.-------..__        __
+     //\\ _,-'\\               `'--._ //\\
+     \\ ;'      \\                   `: //
+      `(          \\                   )'
+        :.          \\,----,         ,;
+         `.`--.___   (    /  ___.--','
+           `.     ``-----'-''     ,'
+              -.               ,-
+           <abbr>gpyy</abbr>  `-._______.-'
+        </pre>
       </div>
     </section>
 
@@ -165,7 +160,7 @@
         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.forum-betrieb.de%2Fimages%2Fforumbetrieb%2Fbedrunka-hirth_logo_2018.jpg&f=1&nofb=1">
         <figcaption>Our parent company</figcaption>
       </figure>
-      <p>Copyright &copy; Bedrunka, LLC</p>
+      <p>Copyright &copy; 2020 bedrunka+hirth</p>
     </footer>
   </body>
 </html>
