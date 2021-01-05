@@ -12,12 +12,18 @@ body {
   }
 }
 
-h1 {
+/* === Navigation === */
+
+#logo {
+  display: inline;
+}
+
+#logo > h1 {
   margin: 0;
   font-size: 1.7rem;
 }
 
-h2 {
+#logo > h2 {
   margin: 0;
   font-size: 0.9rem;
   font-variant: small-caps;
@@ -27,10 +33,6 @@ nav {
   list-style: none;
   float: right;
   vertical-align: middle;
-}
-
-#logo {
-  display: inline-block;
 }
 
 nav li {
@@ -43,21 +45,10 @@ a {
   color: black;
 }
 
-a:link {
-  color: black;
-}
-
-a:visited {
-  color: blue;
-}
-
-a:hover {
-  color: red;
-}
-
-a:active {
-  color: goldenrod;
-}
+a:link { color: black; }
+a:visited { color: blue; }
+a:hover { color: red; }
+a:active { color: goldenrod; }
 
 header {
   justify-content: space-around;
@@ -68,12 +59,16 @@ header {
   page-break-after: always;
 }
 
+/* === Hero === */
+
 #hero {
   height: 400px;
   background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcmkt-image-prd.global.ssl.fastly.net%2F0.1.0%2Fps%2F3379856%2F1360%2F906%2Fm1%2Ffpnw%2Fwm1%2Fpfhgxchmb2ttmklouoabchtigsyma36lawo3w97ycjnyahr5vku9hequuk1beweg-.jpg%3F1507495665%26s%3D7b15527692314d3fc3a11d94a8c69a80&f=1&nofb=1");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* === Sections === */
 
 section {
   width: 100%;
@@ -103,6 +98,8 @@ ol {
   margin-left: 5px;
   margin-right: 5px;
 }
+
+/* === Tables === */
 
 table {
   caption-side: top;
@@ -143,6 +140,8 @@ button {
   height: 30px;
   padding: 4px;
 }
+
+/* === Other === */
 
 img {
   max-height: 100px;
