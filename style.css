@@ -109,6 +109,7 @@ h2 {
 
 table {
   caption-side: top;
+  margin: auto;
 }
 
 table, th, td {
