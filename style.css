@@ -12,6 +12,7 @@ header {
   align-items: center;
   box-shadow: 1px 1px 3px #ccc;
   background-color: white;
+  overflow: hidden;
   /*border-bottom: 1px solid black;*/
 }
 
