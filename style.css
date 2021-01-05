@@ -15,16 +15,13 @@ body {
 /* === Navigation === */
 
 header {
-  justify-content: space-around;
+  display: flex;
   align-items: center;
+  justify-content: space-around;
+  height: 80px;
   box-shadow: 1px 1px 3px #ccc;
   background-color: white;
-  overflow: hidden;
   page-break-after: always;
-}
-
-#logo {
-  display: inline;
 }
 
 #logo > h1 {
@@ -40,7 +37,7 @@ header {
 
 nav {
   list-style: none;
-  float: right;
+  /*float: right;*/
   vertical-align: middle;
 }
 
@@ -63,9 +60,11 @@ a:active { color: goldenrod; }
 
 #hero {
   height: 400px;
+  width: 100%;
   background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcmkt-image-prd.global.ssl.fastly.net%2F0.1.0%2Fps%2F3379856%2F1360%2F906%2Fm1%2Ffpnw%2Fwm1%2Fpfhgxchmb2ttmklouoabchtigsyma36lawo3w97ycjnyahr5vku9hequuk1beweg-.jpg%3F1507495665%26s%3D7b15527692314d3fc3a11d94a8c69a80&f=1&nofb=1");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 /* === Sections === */
@@ -104,6 +103,7 @@ ol {
 table {
   caption-side: top;
   margin: auto;
+  width: 800px;
 }
 
 table, th, td {
@@ -145,4 +145,15 @@ button {
 
 img {
   max-height: 100px;
+}
+
+/* === Footer === */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer img {
+  width: 400px;
 }
