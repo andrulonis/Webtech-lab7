@@ -16,6 +16,12 @@ header {
   /*border-bottom: 1px solid black;*/
 }
 
+#header {
+  height: 400px;
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcmkt-image-prd.global.ssl.fastly.net%2F0.1.0%2Fps%2F3379856%2F1360%2F906%2Fm1%2Ffpnw%2Fwm1%2Fpfhgxchmb2ttmklouoabchtigsyma36lawo3w97ycjnyahr5vku9hequuk1beweg-.jpg%3F1507495665%26s%3D7b15527692314d3fc3a11d94a8c69a80&f=1&nofb=1");
+  background-repeat: no-repeat;
+}
+
 caption {
   margin-top: 50px;
   margin-bottom: 20px;
@@ -35,13 +41,27 @@ strong {
 }
 
 a {
-  text-decoration: none;
   color: black;
 }
 
 a:hover {
-  transition: 200ms;
+  color: red;
+}
+
+a:visited {
   color: blue;
+}
+
+a:link {
+  color: black;
+}
+
+a:active {
+  color: goldenrod;
+}
+
+input:focus {
+  border: 2px solid blue;
 }
 
 nav {
@@ -73,12 +93,11 @@ h2 {
   font-size: 0.9rem;
 }
 
-table {
-  border-collapse: collapse;
-}
-
 table, th, td {
-  border: 1px solid black;
+  border-width: 1px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: black;
   background-color: gold;
   text-align: center;
 }
