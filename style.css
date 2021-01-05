@@ -6,14 +6,11 @@ body {
 }
 
 header {
-  /*display: flex;
-  flex-direction: row;*/
   justify-content: space-around;
   align-items: center;
   box-shadow: 1px 1px 3px #ccc;
   background-color: white;
   overflow: hidden;
-  /*border-bottom: 1px solid black;*/
 }
 
 #header {
@@ -31,7 +28,6 @@ caption {
 
 section {
   width: 100%;
-  /*display: flex;*/
   justify-content: center;
   align-items: center;
 }
@@ -67,14 +63,10 @@ input:focus {
 nav {
   list-style-type: none;
   float: right;
-  /*display: table;
-  flex-direction: row;*/
 }
 
 .logo {
   display: inline-block;
-  /*display: flex;
-  flex-direction: column;*/
 }
 
 li {
