@@ -144,19 +144,20 @@ table {
 
 table, th, td {
   border-width: 1px;
-  border-spacing: 0px;
+  border-spacing: 5px;
   border-style: solid;
   border-color: black;
-  background-color: gold;
   text-align: center;
 }
 
 table td {
   font: 16px "Georgia", sans-serif;
+  background-color: gold;
 }
 
-th {
+table th {
   padding: 8px;
+  background-color: goldenrod;
 }
 
 input {
@@ -169,7 +170,7 @@ input:focus {
 }
 
 button {
-  background-color: gold;
+  background-color: goldenrod;
   cursor: pointer;
   border: none;
   width: 100%;
