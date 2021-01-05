@@ -10,7 +10,7 @@
 
   <body>
     <header>
-      <div class="logo">
+      <div id="logo">
         <h1>Bedrunka</h1>
         <h2>Be yourself. <strong>Bedrunka.</strong></h2>
       </div>
@@ -22,7 +22,7 @@
           <li><a href="#about">About</a></li>
         </ul>
       </nav>
-      <div id="header"></div>
+      <div id="hero"></div>
     </header>
 
     <section id="featured">
@@ -80,65 +80,67 @@
     </section>
 
     <section id="employees">
-      <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
-        <table>
-          <caption>Employees of the Year</caption>
-          <tr>
-            <th>Name</th>
-            <th>Month</th>
-            <th>Streak</th>
-            <th>Image</th>
-          </tr>
-          <tr>
-            <td>Andrzej</td>
-            <td>December, 2020</td>
-            <td>3</td>
-            <td>
-              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
-            </td>
-          </tr>
-          <tr>
-            <td>Alex</td>
-            <td>January, 2021</td>
-            <td>1</td>
-            <td>
-              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
-            </td>
-          </tr>
-          <tr>
-            <td>Eduart</td>
-            <td>September, 2020</td>
-            <td>2</td>
-            <td>
-              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
-            </td>
-          </tr>
-          <tr>
-            <td><input name='name' id='name' type="text"></td>
-            <td><input name='month' id='month' type="date"></td>
-            <td><input name='streak' id='streak' type="number"></td>
-            <td><input name='amount' id='amount' type="number"></td>
-          </tr>
-          <tr>
-            <td colspan="4">
-              <button type="submit">Add Employee</button>
-            </td>
-          </tr>
-        </table>
-      </form>
+      <table>
+        <caption>Employees of the Year</caption>
+        <tr>
+          <th>Name</th>
+          <th>Month</th>
+          <th>Streak</th>
+          <th>Image</th>
+        </tr>
+        <tr>
+          <td>Andrzej</td>
+          <td>December, 2020</td>
+          <td>3</td>
+          <td>
+            <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
+          </td>
+        </tr>
+        <tr>
+          <td>Alex</td>
+          <td>January, 2021</td>
+          <td>1</td>
+          <td>
+            <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
+          </td>
+        </tr>
+        <tr>
+          <td>Eduart</td>
+          <td>September, 2020</td>
+          <td>2</td>
+          <td>
+            <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
+          </td>
+        </tr>
+      </table>
     </section>
 
     <section id="about">
       <h3>About Us</h3>
+      <pre>
+        ____                                    ?~~bL
+        z@~ b                                    |  `U,
+       ]@[  |                                   ]'  z@'
+       d@~' `|, .__     _----L___----, __, .  _t'   `@j
+      `@L_,   "-~ `--"~-a,           `C.  ~""O_    ._`@
+       q@~'   ]P       ]@[            `Y=,   `H+z_  `a@
+       `@L  _z@        d@               Ya     `-@b,_a'
+        `-@d@a'       )@[               `VL      `a@@'
+          aa~'   ],  .a@'                qqL  ), ./~
+          @@_  _z~  _d@[                 .V@  .L_d'
+           "~@@@'  ]@@@'        __      )@n@bza@-"
+             `-@zzz@@@L        )@@z     ]@@=%-"
+               "~~@@@@@bz_    _a@@@@z___a@K
+                   "~-@@@@@@@@@@@@@@@@@@~"   <abbr>jrd</abbr>
+                      `~~~-@~~-@@~~~~~'
+      </pre>
       <p>Bedrunka is the <em>biggest</em> international supermarket selling all kinds of food and drinks.</p> 
       <p>But did you know Bedrunka also sells recipes?</p> 
       <p>Here's how you make Noodles:</p>
-      <pre>
-        <dl>
-          <dt>Ingredients</dt>
-          <dd>Soba Noodles (<abbr>NDLS</abbr>)</dd>
-        </dl>
-      </pre>
+      <dl>
+        <dt>Ingredients</dt>
+        <dd>Soba Noodles (<abbr>NDLS</abbr>)</dd>
+      </dl>
       <h4>Steps</h4>
       <ol>
         <li>Put hot water in Noodles</li>

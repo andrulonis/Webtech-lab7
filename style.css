@@ -12,40 +12,30 @@ body {
   }
 }
 
-header {
-  justify-content: space-around;
-  align-items: center;
-  box-shadow: 1px 1px 3px #ccc;
-  background-color: white;
-  overflow: hidden;
-  page-break-after: always;
+h1 {
+  margin: 0;
+  font-size: 1.7rem;
 }
 
-#header {
-  height: 400px;
-  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcmkt-image-prd.global.ssl.fastly.net%2F0.1.0%2Fps%2F3379856%2F1360%2F906%2Fm1%2Ffpnw%2Fwm1%2Fpfhgxchmb2ttmklouoabchtigsyma36lawo3w97ycjnyahr5vku9hequuk1beweg-.jpg%3F1507495665%26s%3D7b15527692314d3fc3a11d94a8c69a80&f=1&nofb=1");
-  background-repeat: no-repeat;
-  background-size: cover;
+h2 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-variant: small-caps;
 }
 
-caption {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 25px;
-  text-transform: capitalize;
-  font-style: oblique;
+nav {
+  list-style: none;
+  float: right;
+  vertical-align: middle;
 }
 
-section {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  page-break-before: always;
+#logo {
+  display: inline-block;
 }
 
-strong {
-  color: goldenrod;
+nav li {
+  margin: 0px 10px;
+  display: inline;
 }
 
 a {
@@ -69,23 +59,40 @@ a:active {
   color: goldenrod;
 }
 
-input:focus {
-  border: 2px solid blue;
+header {
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 1px 1px 3px #ccc;
+  background-color: white;
+  overflow: hidden;
+  page-break-after: always;
 }
 
-nav {
-  list-style: none;
-  float: right;
-  vertical-align: middle;
+#hero {
+  height: 400px;
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcmkt-image-prd.global.ssl.fastly.net%2F0.1.0%2Fps%2F3379856%2F1360%2F906%2Fm1%2Ffpnw%2Fwm1%2Fpfhgxchmb2ttmklouoabchtigsyma36lawo3w97ycjnyahr5vku9hequuk1beweg-.jpg%3F1507495665%26s%3D7b15527692314d3fc3a11d94a8c69a80&f=1&nofb=1");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.logo {
-  display: inline-block;
+section {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  page-break-before: always;
 }
 
-nav li {
-  margin: 0px 10px;
-  display: inline;
+caption {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 25px;
+  text-transform: capitalize;
+  font-style: oblique;
+}
+
+strong {
+  color: goldenrod;
 }
 
 ol {
@@ -95,17 +102,6 @@ ol {
   background: gold;
   margin-left: 5px;
   margin-right: 5px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 1.7rem;
-}
-
-h2 {
-  margin: 0;
-  font-size: 0.9rem;
-  font-variant: small-caps;
 }
 
 table {
@@ -135,8 +131,8 @@ input {
   height: 30px;
 }
 
-img {
-  max-height: 100px;
+input:focus {
+  border: 2px solid blue;
 }
 
 button {
@@ -146,4 +142,8 @@ button {
   width: 100%;
   height: 30px;
   padding: 4px;
+}
+
+img {
+  max-height: 100px;
 }
