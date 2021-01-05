@@ -6,8 +6,8 @@ body {
 }
 
 header {
-  display: flex;
-  flex-direction: row;
+  /*display: flex;
+  flex-direction: row;*/
   justify-content: space-around;
   align-items: center;
   box-shadow: 1px 1px 3px #ccc;
@@ -24,7 +24,7 @@ caption {
 
 section {
   width: 100%;
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
 }
@@ -45,18 +45,21 @@ a:hover {
 
 .navbar {
   list-style-type: none;
-  display: flex;
-  flex-direction: row;
+  float: right;
+  /*display: table;
+  flex-direction: row;*/
 }
 
 .logo {
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column;*/
 }
 
 li {
   margin: 10px;
+  display: inline
 }
+
 
 h1 {
   margin: 0;
