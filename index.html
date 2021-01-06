@@ -1,3 +1,9 @@
+<!-- The zip filename needs to include the assignment number and your lab group number, for example "assign1-lab145.zip" -->
+
+<!-- Add alts to images -->
+<!-- Section headings -->
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,54 +22,55 @@
       </div>
       <nav>
         <ul>
-          <a href="#"><li>Home</li></a>
-          <a href="#featured"><li>Featured</li></a>
-          <a href="#employees"><li>Employees</li></a>
-          <a href="#about"><li>About</li></a>
+          <li><a href="#">Home</a></li>
+          <li><a href="#featured">Featured</a></li>
+          <li><a href="#employees">Employees</a></li>
+          <li><a href="#about">About</a></li>
         </ul>
       </nav>
     </header>
     <div id="hero"></div>
 
     <section id="featured">
+      <h2>Featured</h2>
       <div>
-        <table>
-          <caption>Featured Products</caption>
-          <tr>
-            <th>Product</th>
-            <th>Origin</th>
-            <th>Best before date</th>
-            <th>Amount</th>
-            <th>Image</th>
-          </tr>
-          <tr>
-            <td>ТОВАРИЩ!</td>
-            <td>Russia</td>
-            <td>23 Nov 2023</td>
-            <td>75</td>
-            <td>
-              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
-            </td>
-          </tr>
-          <tr>
-            <td>Potatoes</td>
-            <td>Poland</td>
-            <td>20 Jan 2021</td>
-            <td>120</td>
-            <td>
-              <img src="https://assets.bonappetit.com/photos/5d7284758d926f0009df5cfc/5:4/w_3165,h_2532,c_limit/Basically-Gojuchang-Chicken-Potato.jpg">
-            </td>
-          </tr>
-          <tr>
-            <td>Noodles</td>
-            <td>Vietnam</td>
-            <td>22 Jun 2022</td>
-            <td>23</td>
-            <td>
-              <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png">
-            </td>
-          </tr>
-          <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
+        <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
+          <table>
+            <caption>Products</caption>
+            <tr>
+              <th>Product</th>
+              <th>Origin</th>
+              <th>Best before date</th>
+              <th>Amount</th>
+              <th>Image</th>
+            </tr>
+            <tr>
+              <td>ТОВАРИЩ!</td>
+              <td>Russia</td>
+              <td>23 Nov 2023</td>
+              <td>75</td>
+              <td>
+                <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png" alt="ТОВАРИЩ">
+              </td>
+            </tr>
+            <tr>
+              <td>Potatoes</td>
+              <td>Poland</td>
+              <td>20 Jan 2021</td>
+              <td>120</td>
+              <td>
+                <img src="https://assets.bonappetit.com/photos/5d7284758d926f0009df5cfc/5:4/w_3165,h_2532,c_limit/Basically-Gojuchang-Chicken-Potato.jpg" alt="Potatoes">
+              </td>
+            </tr>
+            <tr>
+              <td>Noodles</td>
+              <td>Vietnam</td>
+              <td>22 Jun 2022</td>
+              <td>23</td>
+              <td>
+                <img src="https://static-images.jumbo.com/product_images/300720202255_159052CUP-1_360x360.png" alt="Noodles">
+              </td>
+            </tr>
             <tr>
               <td><input name="product" id="product" type="text" required></td>
               <td><input name="origin" id="origin" type="text" required></td>
@@ -76,16 +83,16 @@
                 <button type="submit">Add Product</button>
               </td>
             </tr>
-          </form>
-        </table>
+          </table>
+        </form>
       </div>
     </section>
 
       <!-- INPUT PHOTOS OF EMPLOYEES, ADD MOBILE STUFF, ADD COMPATIBILITY REPORT -->
     <section id="employees">
+      <h2>Employees of the Year</h2>
       <div>
         <table>
-          <caption>Employees of the Year</caption>
           <tr>
             <th>Name</th>
             <th>Month</th>
@@ -97,7 +104,7 @@
             <td>January, 2021</td>
             <td>1</td>
             <td>
-              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
+              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png" alt="Vodka">
             </td>
           </tr>
           <tr>
@@ -105,7 +112,7 @@
             <td>December, 2020</td>
             <td>3</td>
             <td>
-              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
+              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png" alt="Vodka">
             </td>
           </tr>
           <tr>
@@ -113,7 +120,7 @@
             <td>September, 2020</td>
             <td>2</td>
             <td>
-              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png">
+              <img src="https://static.wixstatic.com/media/391720_66b8aa3a1f694aeaa2911cafd280349c.png" alt="Vodka">
             </td>
           </tr>
         </table>
@@ -121,7 +128,7 @@
     </section>
 
     <section id="about">
-      <h3>About Us</h3>
+      <h2>About Us</h2>
       <div>
         <div>
           <p>Bedrunka is the <em>biggest</em> international supermarket selling all kinds of food and drinks.</p> 
@@ -140,24 +147,24 @@
           </ol>
         </div>
         <pre>
-          (\
-          \ \
-      __    \/ ___,.-------..__        __
-     //\\ _,-'\\               `'--._ //\\
-     \\ ;'      \\                   `: //
-      `(          \\                   )'
-        :.          \\,----,         ,;
-         `.`--.___   (    /  ___.--','
-           `.     ``-----'-''     ,'
-              -.               ,-
-           <abbr>gpyy</abbr>  `-._______.-'
+                (\
+                \ \p
+            __    \/ ___,.-------..__        __
+          //\\ _,-'\\               `'--._ //\\
+          \\ ;'      \\                   `: //
+            `(          \\                   )'
+              :.          \\,----,         ,;
+              `.`--.___   (    /  ___.--','
+                `.     ``-----'-''     ,'
+                    -.               ,-
+                <abbr>gpyy</abbr>  `-._______.-'
         </pre>
       </div>
     </section>
 
     <footer>
       <figure>
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.forum-betrieb.de%2Fimages%2Fforumbetrieb%2Fbedrunka-hirth_logo_2018.jpg&f=1&nofb=1">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.forum-betrieb.de%2Fimages%2Fforumbetrieb%2Fbedrunka-hirth_logo_2018.jpg&f=1&nofb=1" alt="parent company">
         <figcaption>Our parent company</figcaption>
       </figure>
       <p>Copyright &copy; 2020 bedrunka+hirth</p>
