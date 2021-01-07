@@ -136,11 +136,11 @@ strong {
 ol {
   text-indent: 5px;
   list-style-position: inside;
-  list-style-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff8%2FFarm-Fresh_chinese_noodles.png&f=1&nofb=1");
   background: gold;
   margin-left: 5px;
   margin-right: 5px;
   padding: 10px;
+  /*list-style-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff8%2FFarm-Fresh_chinese_noodles.png&f=1&nofb=1");*/
 }
 
 /* === Tables === */
