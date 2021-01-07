@@ -21,8 +21,7 @@ header {
   box-shadow: 1px 1px 3px #ccc;
   background-color: white;
   page-break-after: always;
-  padding: 15px;
-  position: fixed;
+  padding: 15px 0;
   width: 100%;
 }
 
@@ -41,13 +40,22 @@ header {
 
 nav {
   list-style: none;
-  /*float: right;*/
   vertical-align: middle;
 }
 
-nav li {
-  display: inline;
-  margin: 15px;
+@media screen and (min-width: 850px) {
+  nav li {
+    display: inline;
+    margin: 15px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  nav li {
+    display: block;
+    margin: 30px 10px;
+    font-size: large;
+  }
 }
 
 a {
@@ -72,7 +80,6 @@ a:active { color: maroon; }
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   height: 600px;
 }
 
