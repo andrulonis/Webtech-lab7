@@ -7,12 +7,10 @@
 
 <!-- 
   TODO: 
-  * list-style-image
   * float
   * print layout
-  * class
   * test browsers
-  * validate HTML/CSS 
+  * validate HTML/CSS
 -->
 
 <!DOCTYPE html>
@@ -44,7 +42,7 @@
     <div id="hero"></div>
 
     <section id="featured">
-      <h2>Featured Products</h2>
+      <h2 class='table-header'>Featured Products</h2>
       <div>
         <form method="POST" action="https://wt.ops.labs.vu.nl/api21/e502cf1e">
           <table>            
@@ -101,7 +99,7 @@
 
     <!-- Does it need a form? -->
     <section id="employees">
-      <h2>Employees of the Year</h2>      
+      <h2 class="table-header">Employees of the Year</h2>      
       <div>
         <table>
           <caption>Thanks everyone for working at this amazing company!</caption>
@@ -140,7 +138,7 @@
     </section>
 
     <section id="recipes">
-      <h2>Recipes</h2>
+      <h2 class="table-header">Recipes</h2>
       <div>
         <div>
           <p>Bedrunka is the <em>biggest</em> international supermarket selling all kinds of food and drinks.</p> 
@@ -157,13 +155,19 @@
             <dd>Mishmash of Polish taste</dd>
           </dl>
           <p>And here is how you prepare Soba Noodles:</p>
-          <h4>Steps</h4>
-          <ol>
+          <h4 class="list-header">Steps</h4>
+          <ol id="steps-list">
             <li>Put hot water in Noodles</li>
             <li>Pour out water</li>
             <li>Mix with ingredients</li>
             <li>Done!</li>
           </ol>
+          <h4 class="list-header">Reviews</h4>
+          <ul id="review-list">
+            <li>Great Noodles!</li>
+            <li>It tastes absolutely amazing!</li>
+            <li>My mom told me I need to make food more often, so I made these all by myself!!!</li>
+          </ul>
         </div>
         <pre>
           \     \

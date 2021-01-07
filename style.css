@@ -38,6 +38,11 @@ header {
   font-style: oblique;
 }
 
+.table-header {
+  float: left;
+  font-size: 1.8rem;
+}
+
 nav {
   list-style: none;
   vertical-align: middle;
@@ -74,13 +79,12 @@ a:active { color: maroon; }
 /* === Hero === */
 
 #hero {
-  height: 400px;
   width: 100%;
   background-image: url("https://wallpaperaccess.com/full/1843937.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 600px;
+  height: 400px;
 }
 
 /* === Sections === */
@@ -133,14 +137,21 @@ strong {
   color: goldenrod;
 }
 
-ol {
+.list-header {
+  font-size: 1.1rem;
+}
+
+#steps-list {
   text-indent: 5px;
   list-style-position: inside;
   background: gold;
   margin-left: 5px;
   margin-right: 5px;
   padding: 10px;
-  /*list-style-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff8%2FFarm-Fresh_chinese_noodles.png&f=1&nofb=1");*/
+}
+
+#review-list {
+  list-style-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff8%2FFarm-Fresh_chinese_noodles.png&f=1&nofb=1");
 }
 
 /* === Tables === */
