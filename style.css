@@ -12,12 +12,9 @@ body {
   }
 }
 
-/* === Navigation === */
+/* === Header === */
 
 header {
-  /*display: flex;
-  align-items: center;
-  justify-content: space-around;*/
   display: inline-block;
   box-shadow: 1px 1px 3px #ccc;
   background-color: white;
@@ -28,7 +25,6 @@ header {
 #logo {
   padding-left: 12%;
   display: inline-block;
-  vertical-align: middle;
 }
 
 #logo > h1 {
@@ -114,10 +110,6 @@ section {
   }
 }
 
-#featured {
-  page-break-after: always;
-}
-
 @media screen and (max-width: 850px) {
   #featured > div {
     width: 100%;
@@ -136,12 +128,8 @@ section {
   }
 }
 
-#employees {
-  page-break-after: always;
-}
-
-#recipes {
-  page-break-after: avoid;
+dl {
+  padding: 15px;
 }
 
 dt, em {
@@ -179,8 +167,17 @@ strong {
 table {
   caption-side: top;
   margin: auto;
-  width: 800px;
   overflow-x: scroll;
+}
+
+@media print {
+  #featured table tr:last-child {
+    display: none;
+  }
+
+  #featured table tr:nth-last-child(2) {
+    display: none;
+  }
 }
 
 table, th, td {
@@ -188,7 +185,8 @@ table, th, td {
   border-spacing: 5px;
   border-style: solid;
   border-color: black;
-  text-align: center;
+  text-align: left;
+  vertical-align: middle;
 }
 
 table td {
@@ -231,7 +229,6 @@ footer {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-  page-break-before: always;
 }
 
 footer > figure {
@@ -248,4 +245,8 @@ footer > figure {
   footer img {
     width: 250px;
   }
+}
+
+.ascii {
+  page-break-before: always;
 }
