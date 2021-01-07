@@ -35,6 +35,8 @@ header {
   margin: 0;
   font-size: 0.9rem;
   font-variant: small-caps;
+  text-transform: capitalize;
+  font-style: oblique;
 }
 
 nav {
@@ -87,7 +89,7 @@ section {
 }
 
 @media screen and (min-width: 850px) {
-  #about > div {
+  #recipes > div {
     display: flex;
     flex-direction: row;
   }
@@ -104,20 +106,20 @@ section {
     overflow-x: auto;
   }
   
-  #about > div {
+  #recipes > div {
     display: flex;
     flex-direction: column;
     margin: 10px;
   }
 }
 
-caption {
-  margin-top: 50px;
-  margin-bottom: 20px;
+dt, em {
   font-weight: bold;
-  font-size: 25px;
-  text-transform: capitalize;
-  font-style: oblique;
+}
+
+caption {
+  margin-bottom: 20px;
+  font-size: 18px;
 }
 
 strong {
