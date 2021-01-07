@@ -20,7 +20,6 @@ header {
   justify-content: space-around;
   box-shadow: 1px 1px 3px #ccc;
   background-color: white;
-  page-break-after: always;
   padding: 15px 0;
   width: 100%;
 }
