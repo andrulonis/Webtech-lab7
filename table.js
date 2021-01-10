@@ -9,6 +9,7 @@ const sortByColumn = (idx) => {
     rows.push(row)
   }
 
+  // FIXME: Numbers don't work because they're a string
   for (let i = 0; i < rows.length - 1; i++) {
     for (let j = 0; j < rows.length - 1; j++) {
       var val = rows[j].getElementsByTagName("td")[idx].innerText
@@ -31,6 +32,4 @@ const sortByColumn = (idx) => {
   for (let i = 0; i < tempRows.length; i++) {
     tbody.insertBefore(tempRows[i], inputRow)
   }
-
-  console.log(rows)
 }
