@@ -10,11 +10,11 @@ const sortByColumn = (idx) => {
   }
 
   for (let i = 0; i < rows.length - 1; i++) {
-    var val = rows[i].getElementsByTagName("td")[idx].innerText
-    var nextVal = rows[i+1].getElementsByTagName("td")[idx].innerText
-
     for (let j = 0; j < rows.length - 1; j++) {
-      if (val < nextVal) {
+      var val = rows[j].getElementsByTagName("td")[idx].innerText
+      var nextVal = rows[j+1].getElementsByTagName("td")[idx].innerText
+
+      if (val > nextVal) {
         let temp = rows[j]
         rows[j] = rows[j+1]
         rows[j+1] = temp
