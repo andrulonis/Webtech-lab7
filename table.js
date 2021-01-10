@@ -1,25 +1,25 @@
 $(document).ready(() => {
   $("th").click(e => {
-    let table = $(e.target).parent().parent().parent()[0]
-    let headerIndex = $(e.target).index()
-    let rows = []
-    let inForm = false
+    let table = $(e.target).parent().parent().parent()[0];
+    let headerIndex = $(e.target).index();
+    let rows = [];
+    let inForm = false;
 
     if (table.parentNode.nodeName == "FORM") {
-      inForm = true
+      inForm = true;
     }
 
     let minus = inForm ? 2 : 0;
 
     for (let i = 1; i < table.rows.length - minus; i++) {
-      let row = table.getElementsByTagName("tr")[i]
-      rows.push(row)
+      let row = table.getElementsByTagName("tr")[i];
+      rows.push(row);
     }
 
     for (let i = 0; i < rows.length - 1; i++) {
       for (let j = 0; j < rows.length - i - 1; j++) {
-        var val = rows[j].getElementsByTagName("td")[headerIndex].innerText
-        var nextVal = rows[j+1].getElementsByTagName("td")[headerIndex].innerText
+        var val = rows[j].getElementsByTagName("td")[headerIndex].innerText;
+        var nextVal = rows[j+1].getElementsByTagName("td")[headerIndex].innerText;
 
 
         // Convert strings to numbers
@@ -27,25 +27,34 @@ $(document).ready(() => {
           val = parseInt(val);
           nextVal = parseInt(nextVal);
         }
-        
+        else if () {
+          //need date REPAIR THIS SHIT TODO: FIXME: ALL TAGS
+        }
+        else {
+          val = val.toLowerCase();
+          nextVal = nextVal.toLowerCase();
+
+        }
+
+
         // Swap values
         if (val > nextVal) {
-          let temp = rows[j]
-          rows[j] = rows[j+1]
-          rows[j+1] = temp
+          let temp = rows[j];
+          rows[j] = rows[j+1];
+          rows[j+1] = temp;
         }
       }
     }
 
     // Replace values
     let tempRows = rows;
-    rows.forEach((el, i) => el.remove())
+    rows.forEach((el) => el.remove());
 
-    let tbody = table.getElementsByTagName("tbody")[0]
-    let headerRow = tbody.childNodes[1]
+    let tbody = table.getElementsByTagName("tbody")[0];
+    let headerRow = tbody.childNodes[1];
 
     for (let i = 0; i < tempRows.length; i++) {
-      $(tempRows[i]).insertBefore(headerRow)
+      $(tempRows[i]).insertBefore(headerRow);
     }
   })
 })
