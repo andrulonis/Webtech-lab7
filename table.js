@@ -2,6 +2,8 @@ const sortByColumn = (idx) => {
   let table = document.getElementById("featured")
   let rows = []
 
+  // TODO: unify usage for both tables
+  // TODO: add to each header the same function and let it calculate which idx to use on its own
   // FIXME: Change 4 to table height
   // TODO: Add toLowerCase()
   for (let i = 1; i < table.getElementsByTagName("table")[0].rows.length - 2; i++) {
@@ -9,7 +11,6 @@ const sortByColumn = (idx) => {
     rows.push(row)
   }
 
-  // FIXME: Numbers don't work because they're a string
   for (let i = 0; i < rows.length - 1; i++) {
     for (let j = 0; j < rows.length - i - 1; j++) {
       var val = rows[j].getElementsByTagName("td")[idx].innerText
