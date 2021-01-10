@@ -15,6 +15,10 @@ const sortByColumn = (idx) => {
       var val = rows[j].getElementsByTagName("td")[idx].innerText
       var nextVal = rows[j+1].getElementsByTagName("td")[idx].innerText
 
+      if (!isNaN(parseInt(val))) {
+        val = parseInt(val);
+        nextVal = parseInt(nextVal);
+      }
       if (val > nextVal) {
         let temp = rows[j]
         rows[j] = rows[j+1]
