@@ -3,6 +3,7 @@ const sortByColumn = (idx) => {
   let rows = []
 
   // FIXME: Change 4 to table height
+  // TODO: Add toLowerCase()
   for (let i = 1; i < 4; i++) {
     let row = table.getElementsByTagName("tr")[i]
     rows.push(row)
@@ -24,12 +25,16 @@ const sortByColumn = (idx) => {
       }
     }
   }
-  
-  /*let sortArr = []
 
-  for (let i = 0; i < rows.length; i++) {
-    sortArr.push(rows[i].getElementsByTagName("td")[idx].innerText)
-  }*/
+  // Replace values
+  let tempRows = rows;
+  rows.forEach((el, i) => el.remove())
+  let inputRow = document.getElementById("inputrow")
+  let tbody = table.getElementsByTagName("tbody")[0]
+
+  for (let i = 0; i < tempRows.length; i++) {
+    tbody.insertBefore(tempRows[i], inputRow)
+  }
 
   console.log(rows)
 }
