@@ -27,7 +27,16 @@ $(document).ready(() => {
           val = parseInt(val);
           nextVal = parseInt(nextVal);
         }
-        
+        else if () {
+          //need date REPAIR THIS SHIT TODO: FIXME: ALL TAGS
+        }
+        else {
+          val = val.toLowerCase();
+          nextVal = nextVal.toLowerCase();
+
+        }
+
+
         // Swap values
         if (val > nextVal) {
           let temp = rows[j];
@@ -49,14 +58,15 @@ $(document).ready(() => {
     }
   })
 })
+
 /*
 const sortByColumn = (idx) => {
   let table = document.getElementById("featured")
   let rows = []
 
-  // TODO: unify usage for both tables
-  // TODO: add to each header the same function and let it calculate which idx to use on its own
-  // FIXME: Change 4 to table height
+  
+ 
+ 
   // TODO: Add toLowerCase()
   for (let i = 1; i < table.getElementsByTagName("table")[0].rows.length - 2; i++) {
     let row = table.getElementsByTagName("tr")[i]
