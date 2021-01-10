@@ -9,8 +9,18 @@ const sortByColumn = (idx) => {
   }
 
   for (let i = 0; i < rows.length; i++) {
-    let val = rows[i].getElementsByTagName("td")[idx].innerText
-    
+    if (i != rows.length) {
+      var val = rows[i].getElementsByTagName("td")[idx].innerText
+      var nextVal = rows[i+1].getElementsByTagName("td")[idx].innerText
+    }
+
+    for (let j = 0; j < rows.length; j++) {
+      if (val < nextVal) {
+        let temp = rows[j]
+        rows[j] = rows[j+1]
+        rows[j+1] = temp
+      }
+    }
   }
   
   /*let sortArr = []
@@ -19,7 +29,5 @@ const sortByColumn = (idx) => {
     sortArr.push(rows[i].getElementsByTagName("td")[idx].innerText)
   }*/
 
-  console.log(sortArr[1])
+  console.log(rows)
 }
-
-const bubbleSort = ()
