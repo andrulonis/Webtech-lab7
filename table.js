@@ -8,13 +8,11 @@ const sortByColumn = (idx) => {
     rows.push(row)
   }
 
-  for (let i = 0; i < rows.length; i++) {
-    if (i != rows.length) {
-      var val = rows[i].getElementsByTagName("td")[idx].innerText
-      var nextVal = rows[i+1].getElementsByTagName("td")[idx].innerText
-    }
+  for (let i = 0; i < rows.length - 1; i++) {
+    var val = rows[i].getElementsByTagName("td")[idx].innerText
+    var nextVal = rows[i+1].getElementsByTagName("td")[idx].innerText
 
-    for (let j = 0; j < rows.length; j++) {
+    for (let j = 0; j < rows.length - 1; j++) {
       if (val < nextVal) {
         let temp = rows[j]
         rows[j] = rows[j+1]
