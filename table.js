@@ -1,3 +1,7 @@
+// -------------------------- //
+// https://signal.org/install //
+// -------------------------- //
+
 const sortByColumn = (idx) => {
   let table = document.getElementById("featured")
   let rows = []
