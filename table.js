@@ -39,7 +39,7 @@ $(document).ready(() => {
 
     // Replace values
     let tempRows = rows;
-    rows.forEach((el, i) => el.remove());
+    rows.forEach((el) => el.remove());
 
     let tbody = table.getElementsByTagName("tbody")[0];
     let headerRow = tbody.childNodes[1];
