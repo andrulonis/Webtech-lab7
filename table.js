@@ -1,27 +1,3 @@
-// -------------------------- //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// https://signal.org/install //
-// -------------------------- //
-
 $(document).ready(() => {
   $("th").click(e => {
     let table = $(e.target).parent().parent().parent()[0]
