@@ -14,5 +14,7 @@ $(document).ready(() => {
       
       $tbody.prepend(row);
     }
+
+    $($tbody).trigger("update")
   })
 })
