@@ -4,6 +4,7 @@ const resetTable = () => {
 
   if (isConfirmed) {
     $($tbody).trigger("update")
+    
     let json = $.get("https://wt.ops.labs.vu.nl/api21/e502cf1e", (data) => {
       console.log(data)
       data = {}
