@@ -1,6 +1,6 @@
 const resetTable = () => {
   let isConfirmed = true
-    //confirm("Are you sure you want to reset the database?")
+    confirm("Are you sure you want to reset the database?")
 
   if (isConfirmed) {
     let json = $.get("https://wt.ops.labs.vu.nl/api21/e502cf1e", (data) => {
