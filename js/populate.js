@@ -1,8 +1,7 @@
 $(document).ready(() => {
   $.get("https://wt.ops.labs.vu.nl/api21/e502cf1e", (data) => {
-    let rows = [];
-    let $table = $("#table-featured");
-
+    let $tbody = $("#table-featured > tbody");
+    
     for (let i = 0; i < data.length; i++) {
       let row = `
         <tr>
@@ -10,10 +9,10 @@ $(document).ready(() => {
           <td>${data[i].origin}</td>
           <td>${data[i].best_before_date}</td>
           <td>${data[i].amount}</td>
-          <td>placeholder</td>
-        </tr>
-      `;
-      $table.append(row);
+          <td><img src="${data[i].image}" alt="${data[i].product}"></td>
+        </tr>`;
+      
+      $tbody.prepend(row);
     }
   })
 })
