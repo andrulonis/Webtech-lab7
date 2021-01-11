@@ -191,12 +191,22 @@ table, th, td {
 
 table td {
   font: 16px "Georgia", sans-serif;
-  background-color: gold;
+  background-color: lightgoldenrodyellow;
 }
 
 table th {
   padding: 8px;
   background-color: goldenrod;
+}
+
+.btn-reset {
+  padding: 7px;
+  background-color: red;
+  text-align: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  cursor: pointer;
 }
 
 input {
@@ -209,7 +219,7 @@ input:focus {
 }
 
 button {
-  background-color: goldenrod;
+  background-color: greenyellow;
   cursor: pointer;
   border: none;
   width: 100%;
