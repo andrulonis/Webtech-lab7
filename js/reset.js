@@ -6,7 +6,10 @@ const resetTable = () => {
     $.ajax({
       url: "https://wt.ops.labs.vu.nl/api21/e502cf1e/reset",
       type: "GET",
-      success: (res) => console.log(res),
+      success: (res) => {
+        console.log(res)
+        populate();
+      },
       error: (res) => console.log(res)
     })
   } 
