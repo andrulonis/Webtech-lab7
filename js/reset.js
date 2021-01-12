@@ -1,3 +1,7 @@
+$(document).ready(() => {
+  $(".btn-reset").click(resetTable)
+})
+
 const resetTable = () => {
   let isConfirmed = true
     confirm("Are you sure you want to reset the database?")
