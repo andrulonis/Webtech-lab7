@@ -8,7 +8,9 @@ const resetTable = () => {
     let json = $.get("https://wt.ops.labs.vu.nl/api21/e502cf1e", (data) => {
       console.log(data)
       data = {}
-    })
+    }, "json").fail(function(jqXHR) {
+      $(".btn-reset").html("There was an error contacting the server: " + jqXHR.status + " " + jqXHR.responseText);
+    }
     /*$.ajax({
       url: "https://api.jsonbin.io/b/5ffc4e878aa7af359da8a015",
       type: "GET",
