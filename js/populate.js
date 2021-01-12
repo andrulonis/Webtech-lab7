@@ -1,4 +1,4 @@
-$(document).ready(() => {
+function populate() {
   $.get("https://wt.ops.labs.vu.nl/api21/e502cf1e", (data) => {
     let $tbody = $("#table-featured > tbody");
     
@@ -14,7 +14,8 @@ $(document).ready(() => {
       
       $tbody.prepend(row);
     }
-
     $($tbody).trigger("update")
   })
-})
+}
+
+$(document).ready(populate()); 

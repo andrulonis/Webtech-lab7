@@ -1,18 +1,31 @@
 $(document).ready(() => {
-    let $tbody = $("#table-featured > tbody");
     const form = document.querySelector("form");
     form.addEventListener("submit", event => {
         event.preventDefault();
         let requestData = {
             product: $("#product").val(),
             origin: $("#origin").val(),
-            best_before_date: $("#est_before_date").val(),
+            best_before_date: $("#best_before_date").val(),
             amount: $("#amount").val(),
             image: $("#image").val()
         };
-        $.post("https://wt.ops.labs.vu.nl/api21/e502cf1e", requestData, function(data) {
-            console.log("test");
-        }, "json");
-        $($tbody).trigger("update")
+        $.ajax({
+            type: "POST",
+            url: "https://wt.ops.labs.vu.nl/api21/e502cf1e",
+            data: requestData,
+            success: function(res) {
+                console.log("Submission successful")
+                console.log(res)
+                //console.log(document.getElementById("table-featured"));
+                for (let i = 0; i < document.getElementById("table-featured").rows.length; i++) {
+                    this.deleteRow[i];
+                }
+                populate();
+            },
+            error: function(res) {
+                console.log("Error in submission")
+                console.log(res)
+            }
+        })
     })
 })
