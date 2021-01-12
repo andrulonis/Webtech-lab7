@@ -16,10 +16,6 @@ $(document).ready(() => {
             success: function(res) {
                 console.log("Submission successful")
                 console.log(res)
-                //console.log(document.getElementById("table-featured"));
-                for (let i = 0; i < document.getElementById("table-featured").rows.length; i++) {
-                    this.deleteRow[i];
-                }
                 populate();
             },
             error: function(res) {
