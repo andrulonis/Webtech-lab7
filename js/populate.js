@@ -32,4 +32,4 @@ function populate() {
   })
 }
 
-$(document).ready(populate()); 
+$(document).ready(populate); 
