@@ -56,6 +56,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js">
     </script>
 
+    <script src="./dateConverter.js"></script>
     <script src="./scripts.js"></script>
   </head>
 
@@ -85,13 +86,13 @@
               <tr>
                 <th>Product</th>
                 <th>Origin</th>
-                <th>Best before date</th>
+                <th class="sorter-dates">Best before date</th>
                 <th>Amount</th>
                 <th class="no-sort">Image</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="row-input">
                 <td><input name="product" id="product" type="text" required></td>
                 <td><input name="origin" id="origin" type="text" required></td>
                 <td><input name="best_before_date" id="best_before_date" type="date" required></td>
@@ -100,8 +101,9 @@
               </tr>
             </tbody>
           </table>
+                                                    <!-- TODO: Add update of table after task 4 done-->
           <button type="submit">Add Product</button>
-          <div class="btn-reset">Reset Data</div>
+          <div class="btn-reset">Reset Data</div> <!--TODO: remove onclick use eventlistener-->
         </form>
       </div>
     </section>
@@ -114,7 +116,7 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Month</th>
+              <th class="sorter-dates">Month</th>
               <th>Streak</th>
               <th class="no-sort">Profile photo</th>
             </tr>
@@ -137,7 +139,7 @@
             </tr>
             <tr>
               <td>Eduart</td>
-              <td>September 2020</td>
+              <td>August 2020</td>
               <td>2</td>
               <td>
                 <img src="https://www.thestatesman.com/wp-content/uploads/2018/12/potus-QT.jpg" alt="Eduart">

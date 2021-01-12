@@ -1,3 +1,29 @@
+$(document).ready(() => {
+  $.tablesorter.addParser({
+    id: "dates",
+    is: (s, table, cell, $cell) => {
+      return false
+    },
+    format: (s, table, cell, cellIndex) => {
+      if (cell.parentNode.className != "row-input") {
+        let split = s.split(" ");
+        let month = months.indexOf(split[0]);
+        let year = split[1];
+
+        return new Date(year, month).getTime();
+      }
+
+      return s;
+    },
+    type: "numeric"
+  })
+
+  sortTable()
+  populate()
+  addReset()
+  formSub()
+})
+
 const sortTable = () => {
     $("table").tablesorter({
         sortInitialOrder: "asc",
@@ -69,7 +95,7 @@ function formSub() {
         let requestData = {
             product: $("#product").val(),
             origin: $("#origin").val(),
-            best_before_date: $("#best_before_date").val(),
+            best_before_date: formatDate($("#best_before_date").val()),
             amount: $("#amount").val(),
             image: $("#image").val()
         };
@@ -89,11 +115,3 @@ function formSub() {
         })
     })
 }
-
-
-$(document).ready(() => {
-    sortTable()
-    populate()
-    addReset()
-    formSub()
-})
