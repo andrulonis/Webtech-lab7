@@ -3,10 +3,10 @@ function populate() {
 
     let $tbody = $("#table-featured > tbody");
     let rowsNum = $("#table-featured tr").length;
-    console.log(rowsNum)
+    let table = document.getElementById("table-featured");
 
     for (let i = rowsNum - 2; i > 0; i--) {
-      document.getElementById("table-featured").deleteRow(i);
+      table.deleteRow(i);
     }
 
     for (let i = 0; i < data.length; i++) {
@@ -21,6 +21,7 @@ function populate() {
       
       $tbody.prepend(row);
     }
+    table.parentNode.reset();
     $($tbody).trigger("update")
   })
 }
