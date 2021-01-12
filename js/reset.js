@@ -8,6 +8,8 @@ const resetTable = () => {
     let json = $.get("https://wt.ops.labs.vu.nl/api21/e502cf1e", (data) => {
       console.log(data)
       data = {}
+      $.delete(data);
+      console.log(data)
     }, "json").fail(function(jqXHR) {
       $(".btn-reset").html("There was an error contacting the server: " + jqXHR.status + " " + jqXHR.responseText);
     }
@@ -17,5 +19,5 @@ const resetTable = () => {
       success: (res) => alert(res),
       error: (xhr, status, err) => alert(err)
     })*/
-  }
+  } //FIXME: idk really what it complains about
 }

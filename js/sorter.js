@@ -1,5 +1,5 @@
 const sortTable = () => {
-  $("#table-featured").tablesorter({
+  $("table").tablesorter({
     sortInitialOrder: "asc",
     headers: {
       ".no-sort": { sorter: false }
