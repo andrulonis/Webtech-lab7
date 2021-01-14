@@ -1,30 +1,10 @@
-// TOOD: All modern browsers support JSON.stringify(object), and knowing how to use it (see ZyBook 7.8) will save you a lot of time!
-
 $(document).ready(() => {
-  // Custom date sorter
-  $.tablesorter.addParser({
-    id: "dates",
-    format: (cellText, table, cell, cellIndex) => {
-      // Do not sort the input row
-      if (cell.parentNode.className != "row-input") {
-        let split = cellText.split(" ");
-        let month = months.indexOf(split[0]);
-        let year = split[1];
-
-        // Sort by difference in milliseconds since 1970-01-01
-        return new Date(year, month).getTime();
-      }
-
-      return cellText;
-    },
-    type: "numeric"
-  })
-
-  sortTable()
-  populate()
+  dateParser();
+  sortTable();
+  populate();
   $(".btn-reset").click(resetTable);
-  addFormHandler()
-})
+  addFormHandler();
+});
 
 const sortTable = () => {
   $("table").tablesorter({
@@ -36,8 +16,8 @@ const sortTable = () => {
         sorter: false 
       }
     }
-  })
-}
+  });
+};
 
 function populate() {
   $.ajax({
@@ -51,7 +31,7 @@ function populate() {
       // rowCount - 2 in order to leave the header and submission row untouched 
       for (let i = rowCount - 2; i > 0; i--) {
         table.deleteRow(i);
-      }
+      };
 
       for (let i = 0; i < data.length; i++) {
         let row = `
@@ -64,33 +44,32 @@ function populate() {
         </tr>`;
         
         $tbody.prepend(row);
-      }
+      };
 
       table.parentNode.reset(); // Reset HTML form
-      $($tbody).trigger("update")
+      $($tbody).trigger("update");
     },
     error: data => {
       console.error(data);
     }
-  })
-}
+  });
+};
 
 const resetTable = () => {
-  let isConfirmed =
-    confirm("Are you sure you want to reset the database?")
+  let isConfirmed = confirm("Are you sure you want to reset the database?");
 
   if (isConfirmed) {
     $.ajax({
       url: "https://wt.ops.labs.vu.nl/api21/e502cf1e/reset",
       type: "GET",
       success: res => {
-        console.log(res)
+        console.log(res);
         populate();
       },
-      error: res => console.error(res)
-    })
-  } 
-}
+      error: res => alert(res)
+    });
+  };
+};
 
 const months = [
   "January", "February", "March", "April", 
@@ -134,6 +113,27 @@ function addFormHandler() {
         console.error("Error in submission: ");
         console.error(res);
       }
-    })
-  })
+    });
+  });
+};
+
+// Custom date sorter
+function dateParser() {
+  $.tablesorter.addParser({
+    id: "dates",
+    format: (cellText, table, cell, cellIndex) => {
+      // Do not sort the input row
+      if (cell.parentNode.className != "row-input") {
+        let split = cellText.split(" ");
+        let month = months.indexOf(split[0]);
+        let year = split[1];
+    
+        // Sort by difference in milliseconds since 1970-01-01
+        return new Date(year, month).getTime();
+      };
+    
+      return cellText;
+    },
+    type: "numeric"
+  });
 }
