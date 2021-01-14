@@ -200,6 +200,10 @@ table th {
   cursor: pointer;
 }
 
+.no-sort {
+  cursor: default;
+}
+
 .tablesorter-ignoreRow {
   visibility: collapse;
 }
