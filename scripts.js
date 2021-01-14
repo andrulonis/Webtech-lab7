@@ -1,3 +1,5 @@
+// TOOD: All modern browsers support JSON.stringify(object), and knowing how to use it (see ZyBook 7.8) will save you a lot of time!
+
 $(document).ready(() => {
   // Custom date sorter
   $.tablesorter.addParser({
