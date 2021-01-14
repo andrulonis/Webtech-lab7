@@ -48,7 +48,7 @@ function populate() {
       let rowCount = $("#table-featured tr").length;
       let table = document.getElementById("table-featured");
 
-      // FIXME: Explain why "rowCount - 2"
+      // rowCount - 2 in order to leave the header and submission row untouched 
       for (let i = rowCount - 2; i > 0; i--) {
         table.deleteRow(i);
       }
