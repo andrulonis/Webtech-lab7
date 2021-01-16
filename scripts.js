@@ -105,7 +105,8 @@ function addFormHandler() {
     $.ajax({
       type: "POST",
       url: "https://wt.ops.labs.vu.nl/api21/e502cf1e",
-      data: requestData,
+      data: JSON.stringify(requestData),
+      contentType: "application/json",
       success: () => {
         console.log("Submission successful");
         populate();
