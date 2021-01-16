@@ -49,8 +49,8 @@ function populate() {
       table.parentNode.reset(); // Reset HTML form
       $($tbody).trigger("update");
     },
-    error: data => {
-      console.error(data);
+    error: () => {
+      alert("Retrieving data unsuccessful");
     }
   });
 };
@@ -66,7 +66,9 @@ const resetTable = () => {
         console.log(res);
         populate();
       },
-      error: res => alert(res)
+      error: () => {
+        alert("Error occurred while resetting database");
+      }
     });
   };
 };
@@ -104,14 +106,12 @@ function addFormHandler() {
       type: "POST",
       url: "https://wt.ops.labs.vu.nl/api21/e502cf1e",
       data: requestData,
-      success: res => {
-        console.log("Submission successful: ");
-        console.log(res);
+      success: () => {
+        console.log("Submission successful");
         populate();
       },
-      error: res => {
-        console.error("Error in submission: ");
-        console.error(res);
+      error: () => {
+        alert("Error in submission");
       }
     });
   });
