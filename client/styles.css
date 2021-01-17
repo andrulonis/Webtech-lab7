@@ -1,0 +1,277 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:rgb(250, 250, 250);
+}
+
+@media print {
+  .orphans {
+    orphans: 2;
+    widows: 2;
+  }
+}
+
+/* === Header === */
+
+header {
+  display: inline-block;
+  box-shadow: 1px 1px 3px #ccc;
+  background-color: white;
+  padding: 15px 0;
+  width: 100%;
+}
+
+#logo {
+  padding-left: 12%;
+  display: inline-block;
+}
+
+#logo > h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+#logo > h2 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  font-style: oblique;
+}
+
+.table-header {
+  font-size: 1.8rem;
+}
+
+nav {
+  padding-right: 12%;
+  list-style: none;
+  vertical-align: middle;
+  float: right;
+}
+
+@media screen and (min-width: 850px) {
+  nav li {
+    display: inline;
+    margin: 15px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  nav li {
+    display: block;
+    margin: 30px 10px;
+    font-size: large;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:link { color: black; }
+a:visited { color: blue; }
+a:hover { 
+  transition: 200ms;
+  color: goldenrod; 
+}
+a:active { color: maroon; }
+
+/* === Hero === */
+
+#hero {
+  width: 100%;
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kellwoodlighting.co.uk%2Fmedia%2Fuploads%2Fcat-129%2Fsupermarket-lighting-ba.jpg%3FTemplateId%3D6%26Width%3D1920%26Height%3D871&f=1&nofb=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  page-break-after: always;
+}
+
+/* === Sections === */
+
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  page-break-after: always;
+  margin-top: 50px;
+}
+
+@media screen and (min-width: 850px) {
+  #recipes > div {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #featured > div {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  #employees > div {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  #recipes > div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+}
+
+dl {
+  padding: 15px;
+}
+
+dt, em {
+  font-weight: bold;
+}
+
+caption {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+strong {
+  color: goldenrod;
+}
+
+.list-header {
+  font-size: 1.1rem;
+}
+
+#steps-list {
+  text-indent: 5px;
+  list-style-position: inside;
+  background: gold;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 10px;
+}
+
+#review-list {
+  list-style-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff8%2FFarm-Fresh_chinese_noodles.png&f=1&nofb=1");
+}
+
+/* === Tables === */
+
+table {
+  caption-side: top;
+  margin: auto;
+  overflow-x: scroll;
+}
+
+@media print {
+  #featured table tr:last-child {
+    display: none;
+  }
+
+  #featured table tr:nth-last-child(2) {
+    display: none;
+  }
+}
+
+table, th, td {
+  border-width: 1px;
+  border-spacing: 5px;
+  border-style: solid;
+  border-color: black;
+  text-align: left;
+  vertical-align: middle;
+}
+
+table td {
+  font: 16px "Georgia", sans-serif;
+  background-color: lightgoldenrodyellow;
+}
+
+table th {
+  padding: 8px;
+  background-color: goldenrod;
+  cursor: pointer;
+}
+
+.no-sort {
+  cursor: default;
+}
+
+.tablesorter-ignoreRow {
+  visibility: collapse;
+}
+
+.btn-reset {
+  padding: 7px;
+  background-color: red;
+  text-align: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+input {
+  border: none;
+  height: 30px;
+}
+
+input:focus {
+  border: 2px solid blue;
+}
+
+button {
+  background-color: greenyellow;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  height: 30px;
+  padding: 4px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  text-transform: uppercase;
+}
+
+/* === Other === */
+
+img {
+  max-height: 100px;
+}
+
+/* === Footer === */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+footer > figure {
+  text-align: center;
+}
+
+@media screen and (min-width: 850px) {
+  footer img {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  footer img {
+    width: 250px;
+  }
+}
+
+.ascii {
+  page-break-before: always;
+}
