@@ -4,17 +4,172 @@
     <title>Documentation - Bedrunka API</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      body {
+        margin: 20px;
+      }
+
+      table, th, td {
+        border-width: 1px;
+        border-style: solid;
+        border-collapse: collapse;
+        text-align: left;
+        padding: 5px;
+      }
+    </style>
   </head>
 
   <body>
     <h1>Bedrunka API</h1>
 
-    <!-- Usage -->
-    <h2>Usage</h2>
+    <h2>Requests</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>Retrieve products</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>Create new products</td>
+        </tr>
+        <tr>
+          <td>UPDATE</td>
+          <td>Update already existing products</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>Delete products</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- TODO: Ask about this part -->
+    <h2>API Reference</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>HTTP Method</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET /products</td>
+          <td>Resource identifier for all Bedrunka's products</td>
+          <td>bedrunka:products</td>
+        </tr>
+        <tr>
+          <td>Product ID</td>
+          <td>Product identifier</td>
+          <td>products</td>
+        </tr>
+        <tr>
+          <td>Bedrunka URL</td>
+          <td>URL</td>
+          <!-- TODO: localhost or bedrunka? -->
+          <td>https://localhost:3000/api/products</td>
+        </tr>
+      </tbody>
+    </table>
     
-    <!-- Functionality -->
-    <h2>Functionality</h2>
-    
-    <h2>Example</h2>
+    <h2>Responses</h2>
+    <h3>Product</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>product</td>
+          <td>The name of the product</td>
+          <td>String</td>
+        </tr>
+        <tr>
+          <td>origin</td>
+          <td>The country of origin of the product</td>
+          <td>String</td>
+        </tr>
+        <tr>
+          <td>best_before_date</td>
+          <td>Expiration date (month)</td>
+          <td>Date</td>
+        </tr>
+        <tr>
+          <td>amount</td>
+          <td>Amount available in our store</td>
+          <td>Number</td>
+        </tr>
+        <tr>
+          <td>image</td>
+          <td>URL to an image of the product</td>
+          <td>URL</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Timestamps</h2>
+    <p>Dates are returned in <em>MMMM YYYY</em> format.</p>
+
+    <h2>Status Response Codes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Status Code</th>
+          <th>Status Title</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>200</td>
+          <td>OK</td>
+          <td>The request has succeeded.</td>
+        </tr>
+        <tr>
+          <td>201</td>
+          <td>Created</td>
+          <td>The request has been fulfilled and resulted in a new resource being created.</td>
+        </tr>
+        <tr>
+          <td>204</td>
+          <td>No Content</td>
+          <td>The request has succeeded but returns no message body.</td>
+        </tr>
+        <tr>
+          <td>400</td>
+          <td>Bad Request</td>
+          <td>The request could not be understood by the server due to malformed syntax. 
+              The message body will contain more information.</td>
+        </tr>
+        <tr>
+          <td>403</td>
+          <td>Forbidden</td>
+          <td>The server understood the request, but is refusing to fulfill it.</td>
+        </tr>
+        <tr>
+          <td>404</td>
+          <td>Not Found</td>
+          <td>The requested product could not be found.</td>
+        </tr>
+        <tr>
+          <td>500</td>
+          <td>Internal Server Error</td>
+          <td>The server has encountered a situation it doesn't know how to handle.</td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
