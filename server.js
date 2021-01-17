@@ -20,6 +20,17 @@
 // shell> npm install sqlite3 express body-parser
 
 
+<<<<<<< HEAD
+// TODO: Return products from database
+router.get("/products", (req, res) => {
+  res.send("Products");
+});
+
+router.post("/products", (req, res) => {})
+router.put("/products", (req, res) => {})
+router.delete("/products", (req, res) => {})
+
+=======
 // ###############################################################################
 //
 // Database setup:
@@ -42,6 +53,7 @@ var app = express();
 
 // We need some middleware to parse JSON data in the body of our HTTP requests:
 var bodyParser = require("body-parser");
+>>>>>>> c1cc96315a1cfdd2ff440de87fd8349ef614901b
 app.use(bodyParser.json());
 
 
