@@ -22,31 +22,39 @@
 
   <body>
     <h1>Bedrunka API</h1>
+    <div>
+      Documentation of RESTful API of Bedrunka website. The API uses HTTP 1.1 method for every function it provides.
 
+    </div>
     <h2>Requests</h2>
     <table>
       <thead>
         <tr>
           <th>Method</th>
           <th>Action</th>
+          <th>RESTful behaviour</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>GET</td>
           <td>Retrieve products</td>
+          <td>Safe - no side effects, as well as the same two requests result in the same retrieval</td>
         </tr>
         <tr>
           <td>POST</td>
           <td>Create new products</td>
+          <td>Two exact same requests result in two different creations of products</td>
         </tr>
         <tr>
           <td>PUT</td>
           <td>Change already existing products</td>
+          <td>Two identical requests lead to second request not changing anything</td>
         </tr>
         <tr>
           <td>DELETE</td>
           <td>Delete products</td>
+          <td>Two identical requests lead to only one deletion of a product</td>
         </tr>
       </tbody>
     </table>
@@ -363,6 +371,11 @@
           <td>404</td>
           <td>Not Found</td>
           <td>The requested product could not be found.</td>
+        </tr>
+        <tr>
+          <td>429</td>
+          <td>Too Many Requests</td>
+          <td>User has sent too many requests in a given amount of time.</td>
         </tr>
         <tr>
           <td>500</td>
