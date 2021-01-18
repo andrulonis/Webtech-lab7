@@ -29,24 +29,29 @@
         <tr>
           <th>Method</th>
           <th>Action</th>
+          <th>RESTful behaviour</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>GET</td>
           <td>Retrieve products</td>
+          <td>Safe - no side effects, as well as the same two requests result in the same retrieval</td>
         </tr>
         <tr>
           <td>POST</td>
           <td>Create new products</td>
+          <td>Two exact same requests result in two different creations of products</td>
         </tr>
         <tr>
           <td>PUT</td>
           <td>Change already existing products</td>
+          <td>Two identical requests lead to second request not changing anything</td>
         </tr>
         <tr>
           <td>DELETE</td>
           <td>Delete products</td>
+          <td>Two identical requests lead to only one deletion of a product</td>
         </tr>
       </tbody>
     </table>
