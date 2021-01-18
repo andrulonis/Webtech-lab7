@@ -53,34 +53,234 @@
 
     <!-- TODO: Ask about this part -->
     <h2>API Reference</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>HTTP Method</th>
-          <th>Description</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>GET /products</td>
-          <td>Resource identifier for all Bedrunka's products</td>
-          <td>bedrunka:products</td>
-        </tr>
-        <tr>
-          <td>Product ID</td>
-          <td>Product identifier</td>
-          <td>products</td>
-        </tr>
-        <tr>
-          <td>Bedrunka URL</td>
-          <td>URL</td>
-          <!-- TODO: localhost or bedrunka? -->
-          <td>https://localhost:3000/api/products</td>
-        </tr>
-      </tbody>
-    </table>
+
+    <!-- GET -->
+    <div>
+      <h3>GET /api/products</h3>
+      <h4>Resource information</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>Format</td>
+            <td>JSON</td>
+          </tr>
+          <tr>
+            <td>Rate limit</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Requires authentication?</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Parameters</h4>
+      <p>By default <code>GET products</code> will return all products.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Required</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>optional</td>
+            <td>The identifier of the product</td>
+            <td>13123</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Example</h4>
+      <h5>Request</h5>
+      <code>
+        GET api/products/13123 HTTP/1.1<br>
+        Host: localhost:3000<br>
+        Content-Type: application/json<br>
+        User-Agent: Mozilla/5.0 Chrome/48.0.2564
+      </code>
+      <h5>Response</h5>
+      <code>
+        HTTP/1.1 201 Created<br>
+        Content-Type: text/plain; charset=utf-8<br>
+        Content-Length: 1<br>
+        Date: Mon, 18 Jan 2021 14:16:29 GMT<br>
+        ETag: W/"66-cZws74LP8XEnwbIEyLgWFw"<br>
+        X-Powered-By: Express<br>
+        <br>
+        [{"id":13123,"product":"Apples","origin":"The Netherlands","best_before_date":"November 2019","amount":"100kg","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Apples.jpg/512px-Apples.jpg%22%7D]
+      </code>
+    </div>
     
+    <!-- POST -->
+    <div>
+      <h3>POST api/products</h3>
+      <h4>Resource information</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>Format</td>
+            <td>JSON</td>
+          </tr>
+          <tr>
+            <td>Rate limit</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Requires authentication?</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Example</h4>
+      <h5>Request</h5>
+      <code>
+        POST /api/products HTTP/1.1<br>
+        Host: localhost:3000<br>
+        Content-Type: application/json<br>
+        User-Agent: Mozilla/5.0 Chrome/48.0.2564<br>
+        <br>
+        {<br>
+          "product": "Cinnamon",<br>
+          "origin": "Egypt",<br>
+          "best_before_date": "June 2021",<br>
+          "amount": "24",<br>
+          "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.dietspotlight.com%2Fwp-content%2Fuploads%2FCinnamon-1.png&f=1&nofb=1"<br>
+        }
+      </code>
+      <h5>Response</h5>
+      <code>
+        HTTP/1.1 201 Created<br>
+        Content-Type: text/plain; charset=utf-8<br>
+        Content-Length: 1<br>
+        Date: Mon, 18 Jan 2021 14:16:29 GMT<br>
+        ETag: W/"66-cZws74LP8XEnwbIEyLgWFw"<br>
+        X-Powered-By: Express<br>
+        <br>
+        Created
+      </code>
+    </div>
+    
+    <!-- PUT -->
+    <div>
+      <h3>PUT /api/products</h3>
+      <h4>Resource information</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>Format</td>
+            <td>JSON</td>
+          </tr>
+          <tr>
+            <td>Rate limit</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Requires authentication?</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Parameters</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Required</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>optional</td>
+            <td>The identifier of the product</td>
+            <td>13123</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Example</h4>
+      <h5>Request</h5>
+      <code>
+        PUT /api/products HTTP/1.1
+        Host: localhost:3000
+        Content-Type: application/json
+        User-Agent: Mozilla/5.0 Chrome/48.0.2564
+
+        {
+          "id": "13123",
+          "product": "Hello There!",
+          "popularity": 8
+        }
+      </code>
+      <h5>Response</h5>
+      <code>
+        HTTP/1.1 204 No Content
+        Date: Mon, 18 Jan 2021 14:31:35 GMT
+        ETag: W/"a-oQDOV50e1MN2H/N8GYi+8w"
+        X-Powered-By: Express
+      </code>
+    </div>
+
+    <!-- DELETE -->
+    <div>
+      <h3>DELETE /api/products</h3>
+      <h4>Resource information</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>Format</td>
+            <td>JSON</td>
+          </tr>
+          <tr>
+            <td>Rate limit</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Requires authentication?</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Parameters</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Required</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>optional</td>
+            <td>The identifier of the product</td>
+            <td>13123</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Example</h4>
+      <h5>Request</h5>
+      <code>
+        DELETE /api/products/13123 HTTP/1.1<br>
+        Host: localhost:3000<br>
+        User-Agent: Mozilla/5.0 Chrome/48.0.2564
+      </code>
+      <h5>Response</h5>
+      <code>
+        HTTP/1.1 204 No Content<br>
+        Date: Mon, 18 Jan 2021 14:31:35 GMT<br>
+        ETag: W/"a-oQDOV50e1MN2H/N8GYi+8w"<br>
+        X-Powered-By: Express
+      </code>
+    </div>
+
     <h2>Responses</h2>
     <h3>Product</h3>
     <table>
