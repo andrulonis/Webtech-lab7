@@ -22,10 +22,7 @@
 
   <body>
     <h1>Bedrunka API</h1>
-    <div>
-      Documentation of RESTful API of Bedrunka website. The API uses HTTP 1.1 method for every function it provides.
-
-    </div>
+    <p>Documentation of RESTful API of Bedrunka website. The API uses HTTP 1.1 method for every function it provides.</p>
     <h2>Requests</h2>
     <table>
       <thead>
@@ -106,7 +103,6 @@
       <code>
         GET api/products/13123 HTTP/1.1<br>
         Host: localhost:3000<br>
-        Content-Type: application/json<br>
         User-Agent: Mozilla/5.0 Chrome/48.0.2564
       </code>
       <h5>Response</h5>
@@ -271,7 +267,7 @@
         X-Powered-By: Express
       </code>
     </div>
-
+    
     <h2>Responses</h2>
     <h3>Product</h3>
     <table>
@@ -295,7 +291,7 @@
         </tr>
         <tr>
           <td>best_before_date</td>
-          <td>Expiration date (month)</td>
+          <td>Expiration date (month year)</td>
           <td>Date</td>
         </tr>
         <tr>
