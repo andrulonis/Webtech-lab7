@@ -59,7 +59,6 @@
       </tbody>
     </table>
 
-    <!-- TODO: Ask about this part -->
     <h2>API Reference</h2>
 
     <!-- GET -->
@@ -192,44 +191,25 @@
           </tr>
         </tbody>
       </table>
-      <h4>Parameters</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Required</th>
-            <th>Description</th>
-            <th>Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>id</td>
-            <td>optional</td>
-            <td>The identifier of the product</td>
-            <td>13123</td>
-          </tr>
-        </tbody>
-      </table>
       <h4>Example</h4>
       <h5>Request</h5>
       <code>
-        PUT /api/products HTTP/1.1
-        Host: localhost:3000
-        Content-Type: application/json
-        User-Agent: Mozilla/5.0 Chrome/48.0.2564
-
-        {
-          "id": "13123",
-          "product": "Hello There!",
-          "popularity": 8
+        PUT /api/products HTTP/1.1<br>
+        Host: localhost:3000<br>
+        Content-Type: application/json<br>
+        User-Agent: Mozilla/5.0 Chrome/48.0.2564<br>
+        <br>
+        {<br>
+          "id": "13123",<br>
+          "product": "Hello There!",<br>
+          "popularity": 8<br>
         }
       </code>
       <h5>Response</h5>
       <code>
-        HTTP/1.1 204 No Content
-        Date: Mon, 18 Jan 2021 14:31:35 GMT
-        ETag: W/"a-oQDOV50e1MN2H/N8GYi+8w"
+        HTTP/1.1 204 No Content<br>
+        Date: Mon, 18 Jan 2021 14:31:35 GMT<br>
+        ETag: W/"a-oQDOV50e1MN2H/N8GYi+8w"<br>
         X-Powered-By: Express
       </code>
     </div>
@@ -267,7 +247,7 @@
         <tbody>
           <tr>
             <td>id</td>
-            <td>optional</td>
+            <td>required</td>
             <td>The identifier of the product</td>
             <td>13123</td>
           </tr>
