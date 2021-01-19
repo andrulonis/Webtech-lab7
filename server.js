@@ -2,70 +2,61 @@
 
 const sqlite = require('sqlite3').verbose();
 const express = require("express");
-
-const db = createDatabase('./products.db');
-const app = express();
-
 const bodyParser = require("body-parser");
+
+const app = express();
+const db = createDatabase('./products.db');
+
 app.use(bodyParser.json());
 
-// TODO: Add your routes here and remove the example routes once you know how
-
-/*app.get('/db-example', function(req, res) {
-    db.all(`SELECT * FROM products WHERE product=?`, ['Apples'], function(err, rows) {
-
-    	// TODO: add code that checks for errors so you know what went wrong if anything went wrong
-    	// TODO: set the appropriate HTTP response headers and HTTP response codes here.
-
-    	return res.json(rows)
-    });
-});*/
+// TODO: add code that checks for errors so you know what went wrong if anything went wrong
+// TODO: set the appropriate HTTP response headers and HTTP response codes here.
 
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
 })
 
-// Return all products
-app.get("/products/", (req, res) => {
-  res.send("Russia");
-});
-
-// Return single product
-app.get("/products/:id", (req, res) => {
-  res.send("Russia");
 app.get("/products/", (req, res) => {
 	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", function(err, rows) {
-
-	});
+    return res.json(rows);
+	})
 });
 
 app.get("/products/:id", (req, res) => {
-	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products WHERE id=" + id, function(err, rows) {
-
-	});
+	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products WHERE id=" + req.params.id, (err, rows) => {
+    if (err) {
+      return res.send(err);
+    }
+    else {
+      return res.json(rows[0]);
+    }
+	})
 });
 
 app.post("/products", (req, res) => {
+  let item = req.body;
+
 	db.run(`INSERT INTO products (product, origin, best_before_date, amount, image)
 	VALUES (?, ?, ?, ?, ?)`,
-	[item['product'], item['origin'], item['best_before_date'], item['amount'],  item['image']], function(err, rows) {
-
+	[item['product'], item['origin'], item['best_before_date'], item['amount'],  item['image']], (err, rows) => {
+    return res.status(201).send("success");
 	});
 });
 
 app.put("/products", (req, res) => {
+  let item = req.body;
+
 	db.run(`UPDATE products
 	SET product=?, origin=?, best_before_date=?, amount=?,
 	image=? WHERE id=?`,
-	[item['product'], item['origin'], item['best_before_date'], item['amount'], item['image'], item['id']], function(err, rows) {
-
+	[item['product'], item['origin'], item['best_before_date'], item['amount'], item['image'], item['id']], (err, rows) => {
+    return res.status(200).send("success");
 	});
 });
 
 app.delete("/products/:id", (req, res) => {
-
-  db.run("DELETE FROM products WHERE id=" + id, function(err, rows) {
-
+  db.run("DELETE FROM products WHERE id=" + req.params.id, (err, rows) => {
+    return res.status(204).send("success");
 	});
 });
 
@@ -76,7 +67,6 @@ app.listen(PORT, () => {
 });
 
 // === DATABASE === //
-
 function createDatabase(filename) {
 	var db = new sqlite.Database(filename, (err) => {
     if (err) {
