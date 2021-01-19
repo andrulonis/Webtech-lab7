@@ -21,8 +21,18 @@ app.use(bodyParser.json());
     });
 });*/
 
-app.get("/products", (req, res) => {
+app.get("/docs", (req, res) => {
+  res.sendFile(__dirname + "/documentation.html");
+})
 
+// Return all products
+app.get("/products/", (req, res) => {
+  res.send("Russia");
+});
+
+// Return single product
+app.get("/products/:id", (req, res) => {
+  res.send("Russia");
 });
 
 app.post("/products", (req, res) => {
@@ -34,14 +44,14 @@ app.put("/products", (req, res) => {
 
 });
 
-app.delete("/products", (req, res) => {
-  
+app.delete("/products/:id", (req, res) => {
+
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Listening on http://localhost:3000/${PORT}...`);
+  console.log(`Listening on http://localhost:${PORT}...`);
 });
 
 // === DATABASE === //
