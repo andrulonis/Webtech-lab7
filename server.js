@@ -1,11 +1,11 @@
 // https://www.sqlitetutorial.net/sqlite-nodejs/
 
-const sqlite = require('sqlite3').verbose();
+const sqlite = require("sqlite3").verbose();
 const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
-const db = createDatabase('./products.db');
+const db = createDatabase("./products.db");
 
 app.use(bodyParser.json());
 
@@ -17,19 +17,20 @@ app.get("/docs", (req, res) => {
 })
 
 app.get("/products/", (req, res) => {
-	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", function(err, rows) {
+	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", (err, rows) => {
     return res.json(rows);
 	})
 });
 
 app.get("/products/:id", (req, res) => {
-	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products WHERE id=" + req.params.id, (err, rows) => {
-    if (err) {
-      return res.send(err);
+  let id = req.params.id;
+
+	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products WHERE id=" + id, (err, rows) => {
+    if (rows.length === 0) {
+      return res.status(404).send(`Cannot GET /products/${id}`);
     }
-    else {
-      return res.json(rows[0]);
-    }
+    
+    return res.json(rows[0]);
 	})
 });
 
@@ -38,7 +39,11 @@ app.post("/products", (req, res) => {
 
 	db.run(`INSERT INTO products (product, origin, best_before_date, amount, image)
 	VALUES (?, ?, ?, ?, ?)`,
-	[item['product'], item['origin'], item['best_before_date'], item['amount'],  item['image']], (err, rows) => {
+	[item["product"], item["origin"], item["best_before_date"], item["amount"],  item["image"]], (err, rows) => {
+    if (err) {
+      return res.status(400).send(`Cannot GET /products/${id}`);
+    }
+
     return res.status(201).send("success");
 	});
 });
@@ -49,13 +54,23 @@ app.put("/products", (req, res) => {
 	db.run(`UPDATE products
 	SET product=?, origin=?, best_before_date=?, amount=?,
 	image=? WHERE id=?`,
-	[item['product'], item['origin'], item['best_before_date'], item['amount'], item['image'], item['id']], (err, rows) => {
+	[item["product"], item["origin"], item["best_before_date"], item["amount"], item["image"], item["id"]], (err, rows) => {
+    if (err) {
+      return res.status(400).send(`Cannot PUT /products/${item["id"]}`);
+    }
+
     return res.status(200).send("success");
 	});
 });
 
 app.delete("/products/:id", (req, res) => {
-  db.run("DELETE FROM products WHERE id=" + req.params.id, (err, rows) => {
+  let id = req.params.id;
+
+  db.run("DELETE FROM products WHERE id=" + id, (err, rows) => {
+    if (rows.length === 0) {
+      return res.status(404).send(`Cannot DELETE /products/${id}`);
+    }
+    
     return res.status(204).send("success");
 	});
 });
@@ -73,7 +88,7 @@ function createDatabase(filename) {
       console.error(err.message);
     }
 
-    console.log('Connected to the products database.');
+    console.log("Connected to the products database.");
   });
   
 	db.serialize(() => {
@@ -91,7 +106,7 @@ function createDatabase(filename) {
 			if (result[0].count == 0) {
 				db.run(`INSERT INTO products (product, origin, best_before_date, amount, image) VALUES (?, ?, ?, ?, ?)`,
 				["Apples", "The Netherlands", "November 2019", "100kg", "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Apples.jpg/512px-Apples.jpg"]);
-				console.log('Inserted dummy Apples entry into empty product database');
+				console.log("Inserted dummy Apples entry into empty product database");
 			} else {
 				console.log("Database already contains", result[0].count, " item(s) at startup.");
 			}
