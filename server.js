@@ -1,27 +1,4 @@
-// ###############################################################################
-// Web Technology at VU University Amsterdam
-// Assignment 3
-//
-// The assignment description is available on Canvas.
-// Please read it carefully before you proceed.
-//
-// This is a template for you to quickly get started with Assignment 3.
-// Read through the code and try to understand it.
-//
-// Have you read the zyBook chapter on Node.js?
-// Have you looked at the documentation of sqlite?
 // https://www.sqlitetutorial.net/sqlite-nodejs/
-//
-// Once you are familiar with Node.js and the assignment, start implementing
-// an API according to your design by adding routes.
-//
-// Make sure you have the required modules installed:
-//
-// shell> npm install sqlite3 express body-parser
-
-
-// ###############################################################################
-//
 // Database setup:
 // First: Our code will open a sqlite database file for you, and create one if it not exists already.
 // We are going to use the variable "db' to communicate to the database:
@@ -31,16 +8,10 @@
 const sqlite = require('sqlite3').verbose();
 let db = my_database('./products.db');
 
-// ###############################################################################
-// The database should be OK by now. Let's setup the Web server so we can start
-// defining routes.
-//
-// First, create an express application `app`:
-
 var express = require("express");
 var app = express();
 
-// We need some middleware to parse JSON data in the body of our HTTP requests:
+// middleware
 var bodyParser = require("body-parser");
 app.use(bodyParser.json());
 

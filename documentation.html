@@ -22,7 +22,10 @@
 
   <body>
     <h1>Bedrunka API</h1>
-    <p>Documentation of RESTful API of Bedrunka website. The API uses HTTP 1.1 method for every function it provides.</p>
+    <div>
+      Documentation of RESTful API of Bedrunka website. The API uses HTTP 1.1 method for every function it provides.
+
+    </div>
     <h2>Requests</h2>
     <table>
       <thead>
@@ -52,45 +55,6 @@
           <td>DELETE</td>
           <td>Delete products</td>
           <td>Two identical requests lead to only one deletion of a product</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2>Responses</h2>
-    <h3>Product</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Key</th>
-          <th>Description</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>product</td>
-          <td>The name of the product</td>
-          <td>String</td>
-        </tr>
-        <tr>
-          <td>origin</td>
-          <td>The country of origin of the product</td>
-          <td>String</td>
-        </tr>
-        <tr>
-          <td>best_before_date</td>
-          <td>Expiration date (month year)</td>
-          <td>Date</td>
-        </tr>
-        <tr>
-          <td>amount</td>
-          <td>Amount available in our store</td>
-          <td>Number</td>
-        </tr>
-        <tr>
-          <td>image</td>
-          <td>URL to an image of the product</td>
-          <td>URL</td>
         </tr>
       </tbody>
     </table>
@@ -142,6 +106,7 @@
       <code>
         GET api/products/13123 HTTP/1.1<br>
         Host: localhost:3000<br>
+        Content-Type: application/json<br>
         User-Agent: Mozilla/5.0 Chrome/48.0.2564
       </code>
       <h5>Response</h5>
@@ -307,6 +272,45 @@
       </code>
     </div>
 
+    <h2>Responses</h2>
+    <h3>Product</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>product</td>
+          <td>The name of the product</td>
+          <td>String</td>
+        </tr>
+        <tr>
+          <td>origin</td>
+          <td>The country of origin of the product</td>
+          <td>String</td>
+        </tr>
+        <tr>
+          <td>best_before_date</td>
+          <td>Expiration date (month)</td>
+          <td>Date</td>
+        </tr>
+        <tr>
+          <td>amount</td>
+          <td>Amount available in our store</td>
+          <td>Number</td>
+        </tr>
+        <tr>
+          <td>image</td>
+          <td>URL to an image of the product</td>
+          <td>URL</td>
+        </tr>
+      </tbody>
+    </table>
+
     <h2>Timestamps</h2>
     <p>Dates are returned in <em>MMMM YYYY</em> format.</p>
 
@@ -316,7 +320,7 @@
         <tr>
           <th>Status Code</th>
           <th>Status Title</th>
-          <th>General description</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
