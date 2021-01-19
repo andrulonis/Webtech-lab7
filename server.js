@@ -9,10 +9,7 @@ const db = createDatabase("./products.db");
 
 app.use(bodyParser.json());
 
-// TODO: add code that checks for errors so you know what went wrong if anything went wrong
-// TODO: set the appropriate HTTP response headers and HTTP response codes here.
-
-// 404
+//TODO: handle CORS for bonus and make website work
 
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
