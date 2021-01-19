@@ -21,21 +21,39 @@ app.use(bodyParser.json());
     });
 });*/
 
-app.get("/products", (req, res) => {
+app.get("/products/", (req, res) => {
+	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", function(err, rows) {
 
+	});
+});
+
+app.get("/products/:id", (req, res) => {
+	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products WHERE id=" + id, function(err, rows) {
+
+	});
 });
 
 app.post("/products", (req, res) => {
-	console.log(req.body);
-	return res.json(req.body);
+	db.run(`INSERT INTO products (product, origin, best_before_date, amount, image)
+	VALUES (?, ?, ?, ?, ?)`,
+	[item['product'], item['origin'], item['best_before_date'], item['amount'],  item['image']], function(err, rows) {
+
+	});
 });
 
 app.put("/products", (req, res) => {
+	db.run(`UPDATE products
+	SET product=?, origin=?, best_before_date=?, amount=?,
+	image=? WHERE id=?`,
+	[item['product'], item['origin'], item['best_before_date'], item['amount'], item['image'], item['id']], function(err, rows) {
 
+	});
 });
 
-app.delete("/products", (req, res) => {
-  
+app.delete("/products/:id", (req, res) => {
+  db.run("DELETE FROM products WHERE id=" + id, function(err, rows) {
+
+	});
 });
 
 const PORT = process.env.PORT || 3000;
