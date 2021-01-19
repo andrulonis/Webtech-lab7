@@ -12,13 +12,20 @@ app.use(bodyParser.json());
 // TODO: add code that checks for errors so you know what went wrong if anything went wrong
 // TODO: set the appropriate HTTP response headers and HTTP response codes here.
 
+// 404
+
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
 })
 
-app.get("/products/", (req, res) => {
+app.get("/products", (req, res) => {
 	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", (err, rows) => {
-    return res.json(rows);
+    if (err) {
+      return res.status(500).send("500 Error retrieving products from database");
+      res.send(err);
+    }
+
+    return res.status(200).json(rows);
 	})
 });
 
@@ -26,25 +33,34 @@ app.get("/products/:id", (req, res) => {
   let id = req.params.id;
 
 	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products WHERE id=" + id, (err, rows) => {
-    if (rows.length === 0) {
-      return res.status(404).send(`Cannot GET /products/${id}`);
+    if (err) {
+      res.status(500).send("500 Error retrieving product from the database.");
+      res.send(err);
+    }
+    else if (rows.length === 0) {
+      return res.status(404).send(`404 Cannot find a product with id ${id}`);
     }
     
-    return res.json(rows[0]);
+    return res.status(200).json(rows[0]);
 	})
 });
 
 app.post("/products", (req, res) => {
   let item = req.body;
 
+  if (!item["product"] || !item["origin"] || !item["best_before_date"] || !item["amount"] || !item["image"]) {
+    return res.status(400).send("400 Bad request");
+  }
+
 	db.run(`INSERT INTO products (product, origin, best_before_date, amount, image)
 	VALUES (?, ?, ?, ?, ?)`,
 	[item["product"], item["origin"], item["best_before_date"], item["amount"],  item["image"]], (err, rows) => {
     if (err) {
-      return res.status(400).send(`Cannot GET /products/${id}`);
+      res.status(500).send("500 Error inserting product into the database.");
+      res.send(err);
     }
 
-    return res.status(201).send("success");
+    return res.status(201).send("201 Created");
 	});
 });
 
@@ -52,14 +68,18 @@ app.put("/products", (req, res) => {
   let item = req.body;
 
 	db.run(`UPDATE products
-	SET product=?, origin=?, best_before_date=?, amount=?,
-	image=? WHERE id=?`,
-	[item["product"], item["origin"], item["best_before_date"], item["amount"], item["image"], item["id"]], (err, rows) => {
-    if (err) {
-      return res.status(400).send(`Cannot PUT /products/${item["id"]}`);
-    }
+    SET product=?, origin=?, best_before_date=?, amount=?,
+    image=? WHERE id=?`,
+    [item["product"], item["origin"], item["best_before_date"], item["amount"], item["image"], item["id"]], (err, rows) => {
+      if (err) {
+        res.status(500).send("500 Error updating product in the database.");
+        res.send(err);
+      }
+      else if (rows.length === 0) {
+        return res.status(404).send(`404 Cannot find a product with id ${item["id"]}`);
+      }
 
-    return res.status(200).send("success");
+      return res.status(200).send("200 OK");
 	});
 });
 
@@ -67,11 +87,15 @@ app.delete("/products/:id", (req, res) => {
   let id = req.params.id;
 
   db.run("DELETE FROM products WHERE id=" + id, (err, rows) => {
-    if (rows.length === 0) {
-      return res.status(404).send(`Cannot DELETE /products/${id}`);
+    if (err) {
+      res.status(500).send("500 Error deleting product from the database.");
+      res.send(err);
+    }
+    else if (rows.length === 0) {
+      return res.status(404).send(`404 Cannot find a product with id ${id}`);
     }
     
-    return res.status(204).send("success");
+    return res.status(204).send("204 No Content");
 	});
 });
 
