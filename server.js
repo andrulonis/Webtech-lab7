@@ -25,14 +25,6 @@ app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
 })
 
-// Return all products
-app.get("/products/", (req, res) => {
-  res.send("Russia");
-});
-
-// Return single product
-app.get("/products/:id", (req, res) => {
-  res.send("Russia");
 app.get("/products/", (req, res) => {
 	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", function(err, rows) {
 
@@ -63,7 +55,6 @@ app.put("/products", (req, res) => {
 });
 
 app.delete("/products/:id", (req, res) => {
-
   db.run("DELETE FROM products WHERE id=" + id, function(err, rows) {
 
 	});
