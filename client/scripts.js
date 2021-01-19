@@ -21,7 +21,7 @@ const sortTable = () => {
 
 function populate() {
   $.ajax({
-    url: "https://wt.ops.labs.vu.nl/api21/e502cf1e",
+    url: "http://localhost:3000/products",
     type: "GET",
     success: data => {
       let $tbody = $("#table-featured > tbody");
@@ -60,7 +60,7 @@ const resetTable = () => {
 
   if (isConfirmed) {
     $.ajax({
-      url: "https://wt.ops.labs.vu.nl/api21/e502cf1e/reset",
+      url: "http://localhost:3000/reset",
       type: "GET",
       success: res => {
         console.log(res);
@@ -104,14 +104,15 @@ function addFormHandler() {
 
     $.ajax({
       type: "POST",
-      url: "https://wt.ops.labs.vu.nl/api21/e502cf1e",
+      url: "http://localhost:3000/products",
       data: JSON.stringify(requestData),
       contentType: "application/json",
       success: () => {
         console.log("Submission successful");
         populate();
       },
-      error: () => {
+      error: (e) => {
+        console.error(JSON.stringify(e));
         alert("Error in submission");
       }
     });
