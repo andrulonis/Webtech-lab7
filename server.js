@@ -9,6 +9,7 @@ const db = createDatabase("./products.db");
 
 app.use(bodyParser.json());
 
+//TODO: add ALL possible error/succ codes
 //TODO: handle CORS for bonus and make website work
 
 app.get("/docs", (req, res) => {
