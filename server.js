@@ -2,12 +2,18 @@
 
 const sqlite = require("sqlite3").verbose();
 const express = require("express");
+const cors = require("cors")
 const bodyParser = require("body-parser");
 
 const app = express();
 const db = createDatabase("./products.db");
 
+const corsOptions = {
+  origin: "http://localhost:5500"
+};
+
 app.use(bodyParser.json());
+app.use(cors(corsOptions));
 
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
@@ -18,9 +24,7 @@ app.get("/products", (req, res) => {
     if (err) {
       return res.status(500).send("500 Error retrieving products from database");
     }
-
     res.status(200);
-    res.header("Access-Control-Allow-Origin", "http://localhost:5500");
     res.json(rows);
 
     return res;
@@ -38,9 +42,7 @@ app.get("/products/:id", (req, res) => {
     else if (rows.length === 0) {
       return res.status(404).send(`404 Cannot find a product with id ${id}`);
     }
-
     res.status(200);
-    res.header("Access-Control-Allow-Origin", "http://localhost:5500");
     
     return res.json(rows[0]);
 	})
@@ -50,7 +52,6 @@ app.post("/products", (req, res) => {
   let item = req.body;
 
   if (!item["product"] || !item["origin"] || !item["best_before_date"] || !item["amount"] || !item["image"]) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:5500");
     return res.status(400).send("400 Bad request");
   }
 
@@ -82,9 +83,7 @@ app.put("/products", (req, res) => {
       else if (rows.length === 0) {
         return res.status(404).send(`404 Cannot find a product with id ${item["id"]}`);
       }
-
       res.status(200);
-      res.header("Access-Control-Allow-Origin", "http://localhost:5500");
 
       return res.status(200).send("200 OK");
 	});
@@ -96,9 +95,7 @@ app.get("/reset", (req, res) => {
     if (err) {
       return res.status(500).send("500 Error deleting products from the database." + err);
     }
-    
     res.status(204);
-    res.header("Access-Control-Allow-Origin", "http://localhost:5500");
 
     return res.send("204 No Content");
 	});
@@ -115,9 +112,7 @@ app.delete("/products/:id", (req, res) => {
     else if (rows.length === 0) {
       return res.status(404).send(`404 Cannot find a product with id ${id}`);
     }
-    
     res.status(204);
-    res.header("Access-Control-Allow-Origin", "http://localhost:5500");
 
     return res.send("204 No Content");
 	});
