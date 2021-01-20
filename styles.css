@@ -225,6 +225,11 @@ table th {
   font-size: 0.9em;
 }
 
+.btn-edit {
+  background-color: gold;
+  cursor: pointer;
+}
+
 input {
   border: none;
   height: 30px;

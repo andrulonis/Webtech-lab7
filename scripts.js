@@ -75,13 +75,15 @@ function populate() {
               <td>${data[i].best_before_date}</td>
               <td>${data[i].amount}</td>
               <td><img src="${data[i].image}" alt="${data[i].product}"></td>
+              <td class="btn-edit" id="${data[i].id}">Edit product</td>
               <td class="btn-delete" id="${data[i].id}">Delete product</td>
           </tr>`;
         
         $tbody.prepend(row);
       };
 
-      $(".btn-delete").click(deleteProduct)
+      $(".btn-edit").click(editProduct);
+      $(".btn-delete").click(deleteProduct);
       table.parentNode.reset(); // Reset HTML form
       $($tbody).trigger("update");
     },
@@ -175,6 +177,11 @@ function dateParser() {
     type: "numeric"
   });
 };
+
+function editProduct() {
+  let id = this.id;
+  
+}
 
 function deleteProduct() {
   let isConfirmed = confirm("Are you sure you want to delete the product?");
