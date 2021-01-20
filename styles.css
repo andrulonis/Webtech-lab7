@@ -229,6 +229,7 @@ table th {
 .btn-edit {
   background-color: gold;
   cursor: pointer;
+  text-align: center;
 }
 
 input {
