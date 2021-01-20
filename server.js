@@ -20,7 +20,6 @@ app.get("/products", (req, res) => {
 	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", (err, rows) => {
     if (err) {
       return res.status(500).send("500 Error retrieving products from database");
-      res.send(err);
     }
 
     res.status(200);
