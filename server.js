@@ -109,7 +109,7 @@ app.delete("/products/:id", (req, res) => {
       res.status(500).send("500 Error deleting product from the database.");
       res.send(err);
     }
-    else if (rows.length === 0) {
+    else if (!rows) {
       return res.status(404).send(`404 Cannot find a product with id ${id}`);
     }
     res.status(204);
