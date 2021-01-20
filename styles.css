@@ -232,6 +232,18 @@ table th {
   text-align: center;
 }
 
+.btn-update {
+  background-color: greenyellow;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-cancel {
+  background-color: orange;
+  cursor: pointer;
+  text-align: center;
+}
+
 input {
   border: none;
   height: 30px;

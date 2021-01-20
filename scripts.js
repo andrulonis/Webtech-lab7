@@ -83,9 +83,25 @@ function populate() {
         $tbody.prepend(row);
       };
 
-      $(".btn-edit").click(() => {
-        let index = $(this).index(this);
-        console.log(index);
+      $(".btn-edit").click(function () {
+        let index = $(this).parent().index();
+        let original = $(this).parent();
+
+        let inputRow = `
+            <td><input name="product" id="product" type="text" required></td>
+            <td><input name="origin" id="origin" type="text" required></td>
+            <td><input name="best_before_date" id="best_before_date" type="date" required></td>
+            <td><input name="amount" id="amount" type="number" min="0" required></td>
+            <td><input name="image" id="image" type="url" required></td>
+            <td class="btn-update">Update</td>
+            <td class="btn-cancel">Cancel</td>
+          `;
+        
+        // TODO: Update
+        // TODO: Cancel 
+
+        $(this).parent().parent().prepend(inputRow);
+        $(this).parent().remove();
       });
 
       $(".btn-delete").click(deleteProduct);
