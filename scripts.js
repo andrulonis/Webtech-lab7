@@ -83,7 +83,11 @@ function populate() {
         $tbody.prepend(row);
       };
 
-      $(".btn-edit").click(editProduct);
+      $(".btn-edit").click(() => {
+        let index = $(this).index(this);
+        console.log(index);
+      });
+
       $(".btn-delete").click(deleteProduct);
       table.parentNode.reset(); // Reset HTML form
       $($tbody).trigger("update");
