@@ -229,7 +229,7 @@ input:focus {
   border: 2px solid blue;
 }
 
-button {
+.btn-add-product {
   background-color: greenyellow;
   cursor: pointer;
   border: none;
@@ -240,6 +240,21 @@ button {
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   text-transform: uppercase;
+}
+
+.searchbar {
+  border: 1px solid black;
+  width: 500px;
+  height: 35px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+#btn-search {
+  width: 505px;
+  background-color: deepskyblue;
+  height: 30px;
+  margin: 10px 0;
 }
 
 /* === Other === */
