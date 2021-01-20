@@ -208,6 +208,11 @@ table th {
   visibility: collapse;
 }
 
+.btn-delete {
+  background-color: red;
+  cursor: pointer;
+}
+
 .btn-reset {
   padding: 7px;
   background-color: red;

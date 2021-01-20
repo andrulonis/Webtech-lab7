@@ -75,11 +75,13 @@ function populate() {
               <td>${data[i].best_before_date}</td>
               <td>${data[i].amount}</td>
               <td><img src="${data[i].image}" alt="${data[i].product}"></td>
+              <td class="btn-delete" id="${data[i].id}">Delete product</td>
           </tr>`;
         
         $tbody.prepend(row);
       };
 
+      $(".btn-delete").click(deleteProduct)
       table.parentNode.reset(); // Reset HTML form
       $($tbody).trigger("update");
     },
@@ -172,4 +174,24 @@ function dateParser() {
     },
     type: "numeric"
   });
+};
+
+function deleteProduct() {
+  let isConfirmed = confirm("Are you sure you want to delete the product?");
+
+  if (isConfirmed) {
+    let url = "http://localhost:3000/product/" + this.id;
+    $.ajax({
+      url: url,
+      type: "DELETE",
+      success: res => {
+        console.log(res);
+        populate();
+      },
+      error: () => {
+        alert("Error occurred while deleting product");
+      }
+    });
+    console.log(url);
+  };
 }
