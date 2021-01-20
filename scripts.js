@@ -4,6 +4,7 @@ $(document).ready(() => {
   populate();
   $(".btn-reset").click(resetTable);
   $("#btn-search").click(searchProduct);
+  $().click(updateProduct); //HERE ADD THE UPDATE THING
   addFormHandler();
 });
 
@@ -176,13 +177,13 @@ function dateParser() {
   });
 };
 
+//Deletes a product of specific ID
 function deleteProduct() {
   let isConfirmed = confirm("Are you sure you want to delete the product?");
 
   if (isConfirmed) {
-    let url = "http://localhost:3000/products/" + this.id;
     $.ajax({
-      url: url,
+      url: `http://localhost:3000/products/${this.id}`,
       type: "DELETE",
       success: res => {
         console.log(res);
@@ -193,4 +194,28 @@ function deleteProduct() {
       }
     });
   };
+}
+
+function updateProduct() {
+  requestData = {
+    id: $("#id").val(),
+    product: $("#product").val(),
+    origin: $("#origin").val(),
+    best_before_date: formatDate($("#best_before_date").val()),
+    amount: $("#amount").val(),
+    image: $("#image").val()
+  }
+  $.ajax({
+    url: "http://localhost:3000/products/",
+    type: "PUT",
+    data: JSON.stringify(requestData),
+    contentType: "application/json",
+    success: res => {
+      console.log(res);
+      populate();
+    },
+    error: () => {
+      alert("Error occurred while updating product");
+    }
+  });
 }
