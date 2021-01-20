@@ -180,7 +180,7 @@ function deleteProduct() {
   let isConfirmed = confirm("Are you sure you want to delete the product?");
 
   if (isConfirmed) {
-    let url = "http://localhost:3000/product/" + this.id;
+    let url = "http://localhost:3000/products/" + this.id;
     $.ajax({
       url: url,
       type: "DELETE",
@@ -192,6 +192,5 @@ function deleteProduct() {
         alert("Error occurred while deleting product");
       }
     });
-    console.log(url);
   };
 }
