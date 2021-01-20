@@ -1,5 +1,5 @@
 // https://www.sqlitetutorial.net/sqlite-nodejs/
-
+//TODO: fix !rows
 const sqlite = require("sqlite3").verbose();
 const express = require("express");
 const cors = require("cors")
@@ -39,7 +39,7 @@ app.get("/products/:id", (req, res) => {
       res.status(500).send("500 Error retrieving product from the database.");
       res.send(err);
     }
-    else if (rows.length === 0) {
+    else if (!rows) {
       return res.status(404).send(`404 Cannot find a product with id ${id}`);
     }
     res.status(200);
@@ -80,7 +80,7 @@ app.put("/products", (req, res) => {
         res.status(500).send("500 Error updating product in the database.");
         res.send(err);
       }
-      else if (rows.length === 0) {
+      else if (!rows) {
         return res.status(404).send(`404 Cannot find a product with id ${item["id"]}`);
       }
       res.status(200);

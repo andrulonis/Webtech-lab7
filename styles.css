@@ -211,6 +211,7 @@ table th {
 .btn-delete {
   background-color: red;
   cursor: pointer;
+  text-align: center;
 }
 
 .btn-reset {
