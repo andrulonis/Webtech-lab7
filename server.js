@@ -9,9 +9,6 @@ const db = createDatabase("./products.db");
 
 app.use(bodyParser.json());
 
-//TODO: add ALL possible error/succ codes
-//TODO: handle CORS for bonus and make website work
-
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
 })
@@ -49,7 +46,6 @@ app.get("/products/:id", (req, res) => {
 	})
 });
 
-// TODO: Enable CORS
 app.post("/products", (req, res) => {
   let item = req.body;
 
