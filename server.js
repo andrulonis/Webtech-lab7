@@ -8,6 +8,11 @@ const app = express();
 const db = createDatabase("./products.db");
 
 app.use(bodyParser.json());
+app.use(express.static(__dirname + "/client"));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/client/index.html");
+})
 
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
