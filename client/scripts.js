@@ -25,17 +25,17 @@ function searchProduct() {
 
       let row = `
         <tr>
-            <td>${data.product}</td>
-            <td>${data.origin}</td>
-            <td>${data.best_before_date}</td>
-            <td>${data.amount}</td>
-            <td><img src="${data.image}" alt="${data.product}"></td>
-            <td class="btn-edit" id="${data.id}">Edit product</td>
+          <td>${data.product}</td>
+          <td>${data.origin}</td>
+          <td>${data.best_before_date}</td>
+          <td>${data.amount}</td>
+          <td><img src="${data.image}" alt="${data.product}"></td>
+          <td class="btn-edit" id="${data.id}">Edit product</td>
         </tr>`;
         
       $tbody.prepend(row);
-      $($tbody).trigger("update");
       $(".btn-edit").click(editProduct);
+      $($tbody).trigger("update");
     },
     error: () => {
       alert("Couldn't find product");
@@ -102,17 +102,20 @@ function editProduct() {
 
   let inputRow = `
       <tr id="edit-inputrow">
-      <td><input name="product" id="product" type="text" value="${$originalRow[0].childNodes[1].textContent}" required></td>
-      <td><input name="origin" id="origin" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
-      <td><input name="best_before_date" id="best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[5].textContent)}" required></td>
-      <td><input name="amount" id="amount" type="number" min="0" value="${$originalRow[0].childNodes[7].textContent}" required></td>
-      <td><input name="image" id="image" type="url" value="${$originalRow[0].childNodes[9].childNodes[0].src}" required></td>
+      <td><input name="product" id="search-product" type="text" value="${$originalRow[0].childNodes[1].textContent}" required></td>
+      <td><input name="origin" id="search-origin" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
+      <td><input name="best_before_date" id="search-best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[5].textContent)}" required></td>
+      <td><input name="amount" id="search-amount" type="number" min="0" value="${$originalRow[0].childNodes[7].textContent}" required></td>
+      <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[9].childNodes[0].src}" required></td>
       <td class="btn-update">Update</td>
       <td class="btn-cancel">Cancel</td>
       </tr>
     `;
 
+  let id = $(this).parent().children().last()[0].id;
   $(this).parent().replaceWith(inputRow);
+
+  console.log(id);
 
   // Cancel
   $(".btn-cancel").click(() => {
@@ -122,8 +125,10 @@ function editProduct() {
 
   // TODO: Update
   $(".btn-update").click(() => {
-
-  });
+    updateProduct(id);
+    //$("#edit-inputrow").replaceWith($originalRow);
+    //$(".btn-edit").click(editProduct);
+  })
 }
 
 // Parse date to YYYY-MM-DD
@@ -246,14 +251,14 @@ function deleteProduct() {
   };
 }
 
-function updateProduct() {
+function updateProduct(id) {
   requestData = {
-    id: $("#id").val(),
-    product: $("#product").val(),
-    origin: $("#origin").val(),
-    best_before_date: formatDate($("#best_before_date").val()),
-    amount: $("#amount").val(),
-    image: $("#image").val()
+    id: id,
+    product: $("#search-product").val(),
+    origin: $("#search-origin").val(),
+    best_before_date: formatDate($("#search-best_before_date").val()),
+    amount: $("#search-amount").val(),
+    image: $("#search-image").val()
   }
   $.ajax({
     url: "http://localhost:3000/products/",
