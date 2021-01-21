@@ -16,6 +16,14 @@ const corsOptions = {
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
+/// Add this for serving the client website (prevents refreshing)
+
+app.use(express.static(__dirname + "/client"));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/client/index.html");
+})
+
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
 })
@@ -83,6 +91,7 @@ app.put("/products", (req, res) => {
       return res.status(404).send(`404 Cannot find a product with id ${item["id"]}`);
     }
     else {
+      // FIXME: Refresh
       db.run(`UPDATE products
         SET product=?, origin=?, best_before_date=?, amount=?,
         image=? WHERE id=?`,
@@ -165,7 +174,7 @@ function createDatabase(filename) {
 		db.all(`select count(*) as count from products`, (err, result) => {
 			if (result[0].count == 0) {
 				db.run(`INSERT INTO products (product, origin, best_before_date, amount, image) VALUES (?, ?, ?, ?, ?)`,
-				["Apples", "The Netherlands", "November 2019", "100kg", "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Apples.jpg/512px-Apples.jpg"]);
+				["Apples", "The Netherlands", "November 2019", "100", "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Apples.jpg/512px-Apples.jpg"]);
 				console.log("Inserted dummy Apples entry into empty product database");
 			} else {
 				console.log("Database already contains", result[0].count, " item(s) at startup.");

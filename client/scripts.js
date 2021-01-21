@@ -4,7 +4,7 @@ $(document).ready(() => {
   populate();
   $(".btn-reset").click(resetTable);
   $(".btn-search").click(searchProduct);
-  $().click(updateProduct); //HERE ADD THE UPDATE THING
+  updateProduct();
   addFormHandler();
 });
 
@@ -34,8 +34,9 @@ function searchProduct() {
         </tr>`;
         
       $tbody.prepend(row);
-      $(".btn-edit").click(editProduct);
       $($tbody).trigger("update");
+      // FIXME: Fix
+      $(".btn-edit").click(editProduct);
     },
     error: () => {
       alert("Couldn't find product");
@@ -102,20 +103,18 @@ function editProduct() {
 
   let inputRow = `
       <tr id="edit-inputrow">
-      <td><input name="product" id="search-product" type="text" value="${$originalRow[0].childNodes[1].textContent}" required></td>
-      <td><input name="origin" id="search-origin" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
-      <td><input name="best_before_date" id="search-best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[5].textContent)}" required></td>
-      <td><input name="amount" id="search-amount" type="number" min="0" value="${$originalRow[0].childNodes[7].textContent}" required></td>
-      <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[9].childNodes[0].src}" required></td>
-      <td class="btn-update">Update</td>
-      <td class="btn-cancel">Cancel</td>
+        <td><input name="product" id="search-product" type="text" value="${$originalRow[0].childNodes[1].textContent}" required></td>
+        <td><input name="origin" id="search-origin" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
+        <td><input name="best_before_date" id="search-best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[5].textContent)}" required></td>
+        <td><input name="amount" id="search-amount" type="number" min="0" value="${$originalRow[0].childNodes[7].textContent}" required></td>
+        <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[9].childNodes[0].src}" required></td>
+        <td><button type="submit" class="btn-update">Update</button></td>
+        <td class="btn-cancel">Cancel</td>
       </tr>
     `;
 
   let id = $(this).parent().children().last()[0].id;
   $(this).parent().replaceWith(inputRow);
-
-  console.log(id);
 
   // Cancel
   $(".btn-cancel").click(() => {
@@ -123,10 +122,9 @@ function editProduct() {
     $(".btn-edit").click(editProduct);
   })
 
-  // TODO: Update
   $(".btn-update").click(() => {
+    // FIXME: Validate form first
     updateProduct(id);
-    $("#edit-inputrow").replaceWith($originalRow);
     $(".btn-edit").click(editProduct);
   })
 }
@@ -181,7 +179,7 @@ const formatDate = date => {
 }
 
 function addFormHandler() {
-  const form = document.querySelector("form");
+  const form = document.getElementById("form-featured");
 
   form.addEventListener("submit", e => {
     e.preventDefault();
@@ -252,25 +250,32 @@ function deleteProduct() {
 }
 
 function updateProduct(id) {
-  requestData = {
-    id: id,
-    product: $("#search-product").val(),
-    origin: $("#search-origin").val(),
-    best_before_date: formatDate($("#search-best_before_date").val()),
-    amount: $("#search-amount").val(),
-    image: $("#search-image").val()
-  }
-  $.ajax({
-    url: "http://localhost:3000/products/",
-    type: "PUT",
-    data: JSON.stringify(requestData),
-    contentType: "application/json",
-    success: res => {
-      console.log(res);
-      populate();
-    },
-    error: () => {
-      alert("Error occurred while updating product");
+  const form = document.getElementById("form-search");
+  
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    requestData = {
+      id: id,
+      product: $("#search-product").val(),
+      origin: $("#search-origin").val(),
+      best_before_date: formatDate($("#search-best_before_date").val()),
+      amount: $("#search-amount").val(),
+      image: $("#search-image").val()
     }
-  });
+    $.ajax({
+      url: "http://localhost:3000/products/",
+      type: "PUT",
+      data: JSON.stringify(requestData),
+      contentType: "application/json",
+      success: res => {
+        console.log(res);
+        searchProduct(id);
+        populate();
+      },
+      error: () => {
+        alert("Error occurred while updating product");
+      }
+    });
+  })
 }

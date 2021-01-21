@@ -77,7 +77,7 @@
     <section id="featured">
       <h2 class='table-header'>Featured Products</h2>
       <div>
-        <form>
+        <form id="form-featured">
           <!-- jQuery Tablesorter 2.0 requires the table to have a class "tablesorter" -->
           <table id="table-featured" class="tablesorter">
             <thead>        
@@ -113,21 +113,23 @@
       <input min="0" type="number" class="searchbar" placeholder="Enter Product ID">
       <button type="submit" class="btn-search">Search</button>
 
-      <table id="table-search">
-        <thead>        
-          <tr>
-            <th class="no-sort">Product</th>
-            <th class="no-sort">Origin</th>
-            <!-- The class "sorter-dates" adds the custom date sorter -->
-            <th class="no-sort">Best before date</th>
-            <th class="no-sort">Amount</th>
-            <!-- The class "no-sort" makes sure the Image column is not sortable -->
-            <th class="no-sort">Image</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <form id="form-search">
+        <table id="table-search">
+          <thead>        
+            <tr>
+              <th class="no-sort">Product</th>
+              <th class="no-sort">Origin</th>
+              <!-- The class "sorter-dates" adds the custom date sorter -->
+              <th class="no-sort">Best before date</th>
+              <th class="no-sort">Amount</th>
+              <!-- The class "no-sort" makes sure the Image column is not sortable -->
+              <th class="no-sort">Image</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </form>
     </section>
 
     <section id="employees">
