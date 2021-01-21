@@ -3,7 +3,7 @@ $(document).ready(() => {
   sortTable();
   populate();
   $(".btn-reset").click(resetTable);
-  $("#btn-search").click(searchProduct);
+  $(".btn-search").click(searchProduct);
   $().click(updateProduct); //HERE ADD THE UPDATE THING
   addFormHandler();
 });
@@ -30,10 +30,12 @@ function searchProduct() {
             <td>${data.best_before_date}</td>
             <td>${data.amount}</td>
             <td><img src="${data.image}" alt="${data.product}"></td>
+            <td class="btn-edit" id="${data.id}">Edit product</td>
         </tr>`;
         
       $tbody.prepend(row);
       $($tbody).trigger("update");
+      $(".btn-edit").click(editProduct);
     },
     error: () => {
       alert("Couldn't find product");
@@ -76,15 +78,13 @@ function populate() {
               <td>${data[i].best_before_date}</td>
               <td>${data[i].amount}</td>
               <td><img src="${data[i].image}" alt="${data[i].product}"></td>
-              <td class="btn-edit" id="${data[i].id}">Edit product</td>
               <td class="btn-delete" id="${data[i].id}">Delete product</td>
           </tr>`;
         
         $tbody.prepend(row);
       };
 
-      // Refresh edit & delete product
-      $(".btn-edit").click(editProduct);
+      // Refresh delete product
       $(".btn-delete").click(deleteProduct);
 
       table.parentNode.reset(); // Reset HTML form

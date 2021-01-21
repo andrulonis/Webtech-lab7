@@ -274,8 +274,9 @@ input:focus {
   text-align: center;
 }
 
-#btn-search {
+.btn-search {
   width: 505px;
+  cursor: pointer;
   background-color: deepskyblue;
   height: 30px;
   margin: 10px 0;
