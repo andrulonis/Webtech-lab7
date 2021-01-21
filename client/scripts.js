@@ -30,6 +30,7 @@ function searchProduct() {
             <td>${data.best_before_date}</td>
             <td>${data.amount}</td>
             <td><img src="${data.image}" alt="${data.product}"></td>
+            <td class="btn-edit" id="${data.id}">Edit product</td>
         </tr>`;
         
       $tbody.prepend(row);
@@ -76,7 +77,6 @@ function populate() {
               <td>${data[i].best_before_date}</td>
               <td>${data[i].amount}</td>
               <td><img src="${data[i].image}" alt="${data[i].product}"></td>
-              <td class="btn-edit" id="${data[i].id}">Edit product</td>
               <td class="btn-delete" id="${data[i].id}">Delete product</td>
           </tr>`;
         
