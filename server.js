@@ -1,4 +1,6 @@
 // https://www.sqlitetutorial.net/sqlite-nodejs/
+//TODO: FIX EDITING OR ADD IT AS SEPERATE FORM WITH ID AS WELL
+//TODO: MAKE CODE PRETTY AND DELETE WHAT IS NOT NEEDED
 //TODO: add comment at submission that when on same host it doesnt refresh
 const sqlite = require("sqlite3").verbose();
 const express = require("express");
