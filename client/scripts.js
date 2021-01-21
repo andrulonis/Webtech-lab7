@@ -83,10 +83,10 @@ function populate() {
         $tbody.prepend(row);
       };
 
-      // Edit product
+      // Refresh edit & delete product
       $(".btn-edit").click(editProduct);
-
       $(".btn-delete").click(deleteProduct);
+
       table.parentNode.reset(); // Reset HTML form
       $($tbody).trigger("update");
     },
