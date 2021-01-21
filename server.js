@@ -23,6 +23,7 @@ app.get("/docs", (req, res) => {
 app.get("/products", (req, res) => {
 	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", (err, rows) => {
     if (err) {
+      console.error(err.message);
       return res.status(500).send("500 Error retrieving products from database");
     }
     res.status(200);
@@ -37,10 +38,10 @@ app.get("/products/:id", (req, res) => {
 
 	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products WHERE id=" + id, (err, rows) => {
     if (err) {
-      res.status(500).send("500 Error retrieving product from the database.");
-      res.send(err);
+      console.error(err.message);
+      return res.status(500).send("500 Error retrieving product from the database.");
     }
-    else if (!rows) {
+    else if (rows.length === 0) {
       return res.status(404).send(`404 Cannot find a product with id ${id}`);
     }
     res.status(200);
@@ -60,6 +61,7 @@ app.post("/products", (req, res) => {
 	VALUES (?, ?, ?, ?, ?)`,
 	[item["product"], item["origin"], item["best_before_date"], item["amount"],  item["image"]], (err, rows) => {
     if (err) {
+      console.error(err.message);
       res.status(500).send("500 Error inserting product into the database.");
       return res.send(err);
     }
@@ -73,27 +75,35 @@ app.post("/products", (req, res) => {
 app.put("/products", (req, res) => {
   let item = req.body;
 
-	db.run(`UPDATE products
-    SET product=?, origin=?, best_before_date=?, amount=?,
-    image=? WHERE id=?`,
-    [item["product"], item["origin"], item["best_before_date"], item["amount"], item["image"], item["id"]], (err, rows) => {
-      if (err) {
-        res.status(500).send("500 Error updating product in the database.");
-        res.send(err);
-      }
-      /*else if (!rows) {
-        return res.status(404).send(`404 Cannot find a product with id ${item["id"]}`);
-      }*/
-      res.status(200);
+  db.all("SELECT * FROM products where id=" + item["id"], (err, rows) => {
+    if (err) {
+      return res.status(500).send("500 Error finding product in the database.");
+    }
+    else if (rows.length === 0) {
+      return res.status(404).send(`404 Cannot find a product with id ${item["id"]}`);
+    }
+    else {
+      db.run(`UPDATE products
+        SET product=?, origin=?, best_before_date=?, amount=?,
+        image=? WHERE id=?`,
+        [item["product"], item["origin"], item["best_before_date"], item["amount"], item["image"], item["id"]], (err, rows) => {
+          if (err) {
+            console.error(err);
+            return res.status(500).send("500 Error updating product in the database.");
+          }
+          res.status(200);
 
-      return res.status(200).send("200 OK");
-	});
+          return res.status(200).send("200 OK");
+      });
+    }
+  })
 });
 
 app.get("/reset", (req, res) => {
   console.log("@andrulonis");
   db.run("DELETE FROM products",(err, rows) => {
     if (err) {
+      console.error(err.message);
       return res.status(500).send("500 Error deleting products from the database." + err);
     }
     res.status(204);
@@ -105,25 +115,30 @@ app.get("/reset", (req, res) => {
 app.delete("/products/:id", (req, res) => {
   let id = req.params.id;
 
-  db.run("DELETE FROM products WHERE id=" + id, (err, rows) => {
+  db.all("SELECT * FROM products where id=" + id, (err, rows) => {
     if (err) {
-      res.status(500).send("500 Error deleting product from the database.");
-      res.send(err);
+      return res.status(500).send("500 Error finding product in the database.");
     }
-    else if (!rows) {
+    else if (rows.length === 0) {
       return res.status(404).send(`404 Cannot find a product with id ${id}`);
     }
+    else {
+      db.run("DELETE FROM products WHERE id=" + id, err => {
+        if (err) {
+          return res.status(500).send("500 Error deleting product from the database.");
+        }
+        res.status(204);
     
-    res.status(204);
-
-    return res.send("204 No Content");
-	});
+        return res.send("204 No Content");
+      });
+    }
+  });
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Listening on http://localhost:${PORT}...`);
+  console.info(`Listening on http://localhost:${PORT}...`);
 });
 
 // === DATABASE === //

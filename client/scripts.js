@@ -126,8 +126,8 @@ function editProduct() {
   // TODO: Update
   $(".btn-update").click(() => {
     updateProduct(id);
-    //$("#edit-inputrow").replaceWith($originalRow);
-    //$(".btn-edit").click(editProduct);
+    $("#edit-inputrow").replaceWith($originalRow);
+    $(".btn-edit").click(editProduct);
   })
 }
 
