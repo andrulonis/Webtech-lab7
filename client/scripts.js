@@ -35,6 +35,7 @@ function searchProduct() {
         
       $tbody.prepend(row);
       $($tbody).trigger("update");
+      $(".btn-edit").click(editProduct);
     },
     error: () => {
       alert("Couldn't find product");
@@ -83,8 +84,7 @@ function populate() {
         $tbody.prepend(row);
       };
 
-      // Refresh edit & delete product
-      $(".btn-edit").click(editProduct);
+      // Refresh delete product
       $(".btn-delete").click(deleteProduct);
 
       table.parentNode.reset(); // Reset HTML form
