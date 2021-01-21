@@ -4,7 +4,6 @@ $(document).ready(() => {
   populate();
   $(".btn-reset").click(resetTable);
   $(".btn-search").click(searchProduct);
-  $().click(updateProduct); //HERE ADD THE UPDATE THING
   addFormHandler();
 });
 
