@@ -90,7 +90,6 @@ app.put("/products", (req, res) => {
       return res.status(404).send(`404 Cannot find a product with id ${item["id"]}`);
     }
     else {
-      // FIXME: Refresh
       db.run(`UPDATE products
         SET product=?, origin=?, best_before_date=?, amount=?,
         image=? WHERE id=?`,

@@ -4,7 +4,6 @@ $(document).ready(() => {
   populate();
   $(".btn-reset").click(resetTable);
   $(".btn-search").click(searchProduct);
-  updateProduct();
   addFormHandler();
 });
 
@@ -113,7 +112,7 @@ function editProduct() {
       </tr>
     `;
 
-  let id = $(this).parent().children().last()[0].id;
+  let edit_id = $(this).parent().children().last()[0].id;
   $(this).parent().replaceWith(inputRow);
 
   // Cancel
@@ -123,8 +122,7 @@ function editProduct() {
   })
 
   $(".btn-update").click(() => {
-    // FIXME: Validate form first
-    updateProduct(id);
+    updateProduct(edit_id);
     $(".btn-edit").click(editProduct);
   })
 }
@@ -254,6 +252,8 @@ function updateProduct(id) {
   
   form.addEventListener("submit", e => {
     e.preventDefault();
+    console.log("dupa")
+    console.log(id)
 
     requestData = {
       id: id,
@@ -270,7 +270,7 @@ function updateProduct(id) {
       contentType: "application/json",
       success: res => {
         console.log(res);
-        searchProduct(id);
+        searchProduct();
         populate();
       },
       error: () => {
