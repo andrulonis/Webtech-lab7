@@ -22,11 +22,27 @@
 
   <body>
     <h1>Bedrunka API</h1>
-    <div>
-      Documentation of RESTful API of Bedrunka website. The API uses HTTP 1.1 method for every function it provides.
+    <p>Documentation of RESTful API of Bedrunka website. The API uses HTTP 1.1 method for every function it provides.</p>
+    
+    <h2>Index</h2>
+    <ul>
+      <li><a href="#title-requests">Requests</a></li>
+      <li><a href="#title-responses">Responses</a></li>
+      <li>
+        <a href="#title-reference">API Reference</a>
+        <ul>
+          <li><a href="#title-reference-get">GET api/products</a></li>
+          <li><a href="#title-reference-post">POST api/products</a></li>
+          <li><a href="#title-reference-put">PUT api/products</a></li>
+          <li><a href="#title-reference-delete">DELETE api/products</a></li>
+        </ul>
+      </li>
+      <li><a href="#title-timestamps">Timestamps</a></li>
+      <li><a href="#title-cors">Cross-Origin Resource Sharing (CORS)</a></li>
+      <li><a href="#title-codes">Status Response Codes</a></li>
+    </ul>
 
-    </div>
-    <h2>Requests</h2>
+    <h2 id="title-requests">Requests</h2>
     <table>
       <thead>
         <tr>
@@ -59,7 +75,7 @@
       </tbody>
     </table>
 
-    <h2>Responses</h2>
+    <h2 id="title-responses">Responses</h2>
     <h3>Product object</h3>
     <table>
       <thead>
@@ -98,11 +114,11 @@
       </tbody>
     </table>
 
-    <h2>API Reference</h2>
+    <h2 id="title-reference">API Reference</h2>
 
     <!-- GET -->
     <div>
-      <h3>GET api/products</h3>
+      <h3 id="title-reference-get">GET api/products</h3>
       <h4>Resource information</h4>
       <table>
         <tbody>
@@ -186,7 +202,7 @@
     
     <!-- POST -->
     <div>
-      <h3>POST api/products</h3>
+      <h3 id="title-reference-post">POST api/products</h3>
       <h4>Resource information</h4>
       <table>
         <tbody>
@@ -258,7 +274,7 @@
     
     <!-- PUT -->
     <div>
-      <h3>PUT api/products</h3>
+      <h3 id="title-reference-put">PUT api/products</h3>
       <h4>Resource information</h4>
       <table>
         <tbody>
@@ -330,7 +346,7 @@
 
     <!-- DELETE -->
     <div>
-      <h3>DELETE api/products</h3>
+      <h3 id="title-reference-delete">DELETE api/products</h3>
       <h4>Resource information</h4>
       <table>
         <tbody>
@@ -408,14 +424,14 @@
       </table>
     </div>
 
-    <h2>Timestamps</h2>
+    <h2 id="title-timestamps">Timestamps</h2>
     <p>Dates are returned in <em>MMMM YYYY</em> format.</p>
 
-    <h2>CORS</h2>
+    <h2 id="title-cors">Cross-Origin Resource Sharing (CORS)</h2>
     <p>CORS works for this server and is bound to one specific origin.</p>
     <p>In order to make the server work with website, server.js needs to be changed - in CORS options at the top, change the origin to the domain used for Bedrunka.</p>
 
-    <h2>Status Response Codes</h2>
+    <h2 id="title-codes">Status Response Codes</h2>
     <table>
       <thead>
         <tr>

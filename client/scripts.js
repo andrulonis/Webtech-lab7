@@ -83,26 +83,8 @@ function populate() {
         $tbody.prepend(row);
       };
 
-      $(".btn-edit").click(function () {
-        let index = $(this).parent().index();
-        let original = $(this).parent();
-
-        let inputRow = `
-            <td><input name="product" id="product" type="text" required></td>
-            <td><input name="origin" id="origin" type="text" required></td>
-            <td><input name="best_before_date" id="best_before_date" type="date" required></td>
-            <td><input name="amount" id="amount" type="number" min="0" required></td>
-            <td><input name="image" id="image" type="url" required></td>
-            <td class="btn-update">Update</td>
-            <td class="btn-cancel">Cancel</td>
-          `;
-        
-        // TODO: Update
-        // TODO: Cancel 
-
-        $(this).parent().parent().prepend(inputRow);
-        $(this).parent().remove();
-      });
+      // Edit product
+      $(".btn-edit").click(editProduct);
 
       $(".btn-delete").click(deleteProduct);
       table.parentNode.reset(); // Reset HTML form
@@ -113,6 +95,52 @@ function populate() {
     }
   });
 };
+
+function editProduct() {
+  let $originalRow = $(this).parent().clone();
+  // 1 3 5 7 9
+
+  let inputRow = `
+      <tr id="edit-inputrow">
+      <td><input name="product" id="product" type="text" value="${$originalRow[0].childNodes[1].textContent}" required></td>
+      <td><input name="origin" id="origin" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
+      <td><input name="best_before_date" id="best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[5].textContent)}" required></td>
+      <td><input name="amount" id="amount" type="number" min="0" value="${$originalRow[0].childNodes[7].textContent}" required></td>
+      <td><input name="image" id="image" type="url" value="${$originalRow[0].childNodes[9].childNodes[0].src}" required></td>
+      <td class="btn-update">Update</td>
+      <td class="btn-cancel">Cancel</td>
+      </tr>
+    `;
+
+  $(this).parent().replaceWith(inputRow);
+
+  // Cancel
+  $(".btn-cancel").click(() => {
+    $("#edit-inputrow").replaceWith($originalRow);
+    $(".btn-edit").click(editProduct);
+  })
+
+  // TODO: Update
+  $(".btn-update").click(() => {
+
+  });
+}
+
+// Parse date to YYYY-MM-DD
+const parseDate = (str) => {
+  let split = str.split(" ");
+  let month = months.indexOf(split[0]);
+  let year = split[1];
+
+  let date = new Date(year, month);
+  let mm = parseInt(date.getMonth()) + 1;
+  
+  if (parseInt(date.getMonth()) + 1 < 10) {
+    mm = "0" + (date.getMonth() + 1);
+  }
+
+  return `${date.getFullYear()}-${mm}-01`;
+}
 
 const resetTable = () => {
   let isConfirmed = confirm("Are you sure you want to reset the database?");
@@ -198,11 +226,6 @@ function dateParser() {
     type: "numeric"
   });
 };
-
-function editProduct() {
-  let id = this.id;
-  
-}
 
 //Deletes a product of specific ID
 function deleteProduct() {
