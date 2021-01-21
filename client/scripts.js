@@ -3,7 +3,7 @@ $(document).ready(() => {
   sortTable();
   populate();
   $(".btn-reset").click(resetTable);
-  $("#btn-search").click(searchProduct);
+  $(".btn-search").click(searchProduct);
   $().click(updateProduct); //HERE ADD THE UPDATE THING
   addFormHandler();
 });
