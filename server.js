@@ -1,5 +1,6 @@
 // https://www.sqlitetutorial.net/sqlite-nodejs/
 //TODO: fix !rows
+//TODO: ASK ABOUT TABLE BEING RESPONSIVE
 //TODO: ask if delete and update are done correctly or should it be stupid ASK ABOUT ID AND DELETE AND IF THE WEBSITE SHOULD BE ON SAME SERVER OR NOT
 const sqlite = require("sqlite3").verbose();
 const express = require("express");
