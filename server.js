@@ -1,6 +1,5 @@
 // https://www.sqlitetutorial.net/sqlite-nodejs/
-//TODO: ASK ABOUT TABLE BEING RESPONSIVE, AND ABOUT REFRESHING IF IT IS A PROBLEM
-//TODO: ask if delete and update are done correctly or should it be stupid ASK ABOUT ID AND DELETE AND IF THE WEBSITE SHOULD BE ON SAME SERVER OR NOT
+//TODO: add comment at submission that when on same host it doesnt refresh
 const sqlite = require("sqlite3").verbose();
 const express = require("express");
 const cors = require("cors")
