@@ -8,10 +8,10 @@ $(document).ready(() => {
 });
 
 function searchProduct() {
-  let id = $(".searchbar").val();
+  let search_id = $(".searchbar").val();
   
   $.ajax({
-    url: `http://localhost:3000/products/${id}`,
+    url: `http://localhost:3000/products/${search_id}`,
     type: "GET",
     success: data => {
       let $tbody = $("#table-search > tbody");
@@ -34,7 +34,6 @@ function searchProduct() {
         
       $tbody.prepend(row);
       $($tbody).trigger("update");
-      // FIXME: Fix
       $(".btn-edit").click(editProduct);
     },
     error: () => {
@@ -98,7 +97,6 @@ function populate() {
 
 function editProduct() {
   let $originalRow = $(this).parent().clone();
-  // 1 3 5 7 9
 
   let inputRow = `
       <tr id="edit-inputrow">
@@ -109,8 +107,7 @@ function editProduct() {
         <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[9].childNodes[0].src}" required></td>
         <td><button type="submit" class="btn-update">Update</button></td>
         <td class="btn-cancel">Cancel</td>
-      </tr>
-    `;
+      </tr>`;
 
   let edit_id = $(this).parent().children().last()[0].id;
   $(this).parent().replaceWith(inputRow);
@@ -123,7 +120,7 @@ function editProduct() {
 
   $(".btn-update").click(() => {
     updateProduct(edit_id);
-    $(".btn-edit").click(editProduct);
+    //$(".btn-edit").click(editProduct); TODO: PROB DELETE THIS LINE
   })
 }
 
@@ -249,10 +246,9 @@ function deleteProduct() {
 
 function updateProduct(id) {
   const form = document.getElementById("form-search");
-  
+
   form.addEventListener("submit", e => {
     e.preventDefault();
-    console.log("dupa")
     console.log(id)
 
     requestData = {
