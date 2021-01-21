@@ -82,9 +82,9 @@ app.put("/products", (req, res) => {
         res.status(500).send("500 Error updating product in the database.");
         res.send(err);
       }
-      else if (!rows) {
+      /*else if (!rows) {
         return res.status(404).send(`404 Cannot find a product with id ${item["id"]}`);
-      }
+      }*/
       res.status(200);
 
       return res.status(200).send("200 OK");
