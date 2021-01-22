@@ -2,6 +2,10 @@ $(document).ready(() => {
   dateParser();
   sortTable();
   populate();
+  $("#form-search").submit(e => {
+    e.preventDefault();
+    updateProduct();
+  });
   $(".btn-reset").click(resetTable);
   $(".btn-search").click(searchProduct);
   addFormHandler();
@@ -24,6 +28,7 @@ function searchProduct() {
 
       let row = `
         <tr>
+          <td>${data.id}</td>
           <td>${data.product}</td>
           <td>${data.origin}</td>
           <td>${data.best_before_date}</td>
@@ -100,11 +105,12 @@ function editProduct() {
 
   let inputRow = `
       <tr id="edit-inputrow">
-        <td><input name="product" id="search-product" type="text" value="${$originalRow[0].childNodes[1].textContent}" required></td>
-        <td><input name="origin" id="search-origin" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
-        <td><input name="best_before_date" id="search-best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[5].textContent)}" required></td>
-        <td><input name="amount" id="search-amount" type="number" min="0" value="${$originalRow[0].childNodes[7].textContent}" required></td>
-        <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[9].childNodes[0].src}" required></td>
+        <td id="search-product-id">${$originalRow[0].childNodes[1].textContent}</td>
+        <td><input name="product" id="search-product" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
+        <td><input name="origin" id="search-origin" type="text" value="${$originalRow[0].childNodes[5].textContent}" required></td>
+        <td><input name="best_before_date" id="search-best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[7].textContent)}" required></td>
+        <td><input name="amount" id="search-amount" type="number" min="0" value="${$originalRow[0].childNodes[9].textContent}" required></td>
+        <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[11].childNodes[0].src}" required></td>
         <td><button type="submit" class="btn-update">Update</button></td>
         <td class="btn-cancel">Cancel</td>
       </tr>`;
@@ -118,10 +124,10 @@ function editProduct() {
     $(".btn-edit").click(editProduct);
   })
 
-  $(".btn-update").click(() => {
+  /*$(".btn-update").click(() => {
     updateProduct(edit_id);
     //$(".btn-edit").click(editProduct); TODO: PROB DELETE THIS LINE
-  })
+  })*/
 }
 
 // Parse date to YYYY-MM-DD
@@ -244,34 +250,29 @@ function deleteProduct() {
   };
 }
 
-function updateProduct(id) {
-  const form = document.getElementById("form-search");
+function updateProduct() {
+  let id = parseInt($("#search-product-id")[0].textContent);
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    console.log(id)
+  requestData = {
+    id: id,
+    product: $("#search-product").val(),
+    origin: $("#search-origin").val(),
+    best_before_date: formatDate($("#search-best_before_date").val()),
+    amount: $("#search-amount").val(),
+    image: $("#search-image").val()
+  }
 
-    requestData = {
-      id: id,
-      product: $("#search-product").val(),
-      origin: $("#search-origin").val(),
-      best_before_date: formatDate($("#search-best_before_date").val()),
-      amount: $("#search-amount").val(),
-      image: $("#search-image").val()
+  $.ajax({
+    url: "http://localhost:3000/products/",
+    type: "PUT",
+    data: JSON.stringify(requestData),
+    contentType: "application/json",
+    success: res => {
+      console.log(res);
+      populate();
+    },
+    error: () => {
+      alert("Error occurred while updating product");
     }
-    $.ajax({
-      url: "http://localhost:3000/products/",
-      type: "PUT",
-      data: JSON.stringify(requestData),
-      contentType: "application/json",
-      success: res => {
-        console.log(res);
-        searchProduct();
-        populate();
-      },
-      error: () => {
-        alert("Error occurred while updating product");
-      }
-    });
-  })
+  });
 }

@@ -152,6 +152,7 @@ strong {
 #steps-list {
   text-indent: 5px;
   list-style-position: inside;
+  list-style-type: upper-roman;
   background: gold;
   margin-left: 5px;
   margin-right: 5px;
