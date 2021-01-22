@@ -2,12 +2,15 @@ $(document).ready(() => {
   dateParser();
   sortTable();
   populate();
+
   $("#form-search").submit(e => {
     e.preventDefault();
     updateProduct();
   });
+
   $(".btn-reset").click(resetTable);
   $(".btn-search").click(searchProduct);
+  
   addFormHandler();
 });
 
@@ -24,7 +27,7 @@ const sortTable = () => {
   });
 };
 
-// Parse date to YYYY-MM-DD
+// Parse date to ISO 8601 format (YYYY-MM-DD)
 const parseDate = (str) => {
   let split = str.split(" ");
   let month = months.indexOf(split[0]);
@@ -33,6 +36,7 @@ const parseDate = (str) => {
   let date = new Date(year, month);
   let mm = parseInt(date.getMonth()) + 1;
   
+  // Add leading 0 for january - september
   if (parseInt(date.getMonth()) + 1 < 10) {
     mm = "0" + (date.getMonth() + 1);
   };
@@ -46,7 +50,7 @@ const months = [
   "September", "October", "November", "December"
 ];
 
-// Format date from "yyyy-mm-dd" to "mmmm yyyy"
+// Format date from ISO 8601 (YYYY-MM-DD) to "MMMM YYYY"
 const formatDate = date => {
   let split = date.split("-");
   let year = parseInt(split[0]);
@@ -76,7 +80,7 @@ function dateParser() {
   });
 };
 
-//Provides input for updating product
+//P rovides input for updating product
 function editProduct() {
   let $originalRow = $(this).parent().clone();
 
@@ -102,7 +106,7 @@ function editProduct() {
   });
 };
 
-//Creates a product
+// Creates a product
 function addFormHandler() {
   const form = document.getElementById("form-featured");
 
@@ -134,9 +138,10 @@ function addFormHandler() {
   });
 };
 
-//Retrieves a product of specific ID
+// Retrieves a product of specific ID
 function searchProduct() {
   let search_id = $(".searchbar").val();
+  
   if (!search_id) {
     alert("Please enter an ID");
   }
@@ -175,7 +180,7 @@ function searchProduct() {
   };
 };
 
-//Retrieves whole table
+// Retrieves whole table
 function populate() {
   $.ajax({
     url: "http://localhost:3000/products",
@@ -193,12 +198,12 @@ function populate() {
       for (let i = 0; i < data.length; i++) {
         let row = `
           <tr>
-              <td>${data[i].product}</td>
-              <td>${data[i].origin}</td>
-              <td>${data[i].best_before_date}</td>
-              <td>${data[i].amount}</td>
-              <td><img src="${data[i].image}" alt="${data[i].product}"></td>
-              <td class="btn-delete" id="${data[i].id}">Delete product</td>
+            <td>${data[i].product}</td>
+            <td>${data[i].origin}</td>
+            <td>${data[i].best_before_date}</td>
+            <td>${data[i].amount}</td>
+            <td><img src="${data[i].image}" alt="${data[i].product}"></td>
+            <td class="btn-delete" id="${data[i].id}">Delete product</td>
           </tr>`;
         
         $tbody.prepend(row);
@@ -216,7 +221,7 @@ function populate() {
   });
 };
 
-//Updates a product of specific ID
+// Updates a product of specific ID
 function updateProduct() {
   let id = parseInt($("#search-product-id")[0].textContent);
 
@@ -258,7 +263,7 @@ function updateProduct() {
   });
 }
 
-//Search a product by specific
+// Search a product by specific
 function searchProduct() {
   let search_id = $(".searchbar").val();
   if (!search_id) {
@@ -299,7 +304,7 @@ function searchProduct() {
   };
 };
 
-//Deletes a product of specific ID
+// Deletes a product of specific ID
 function deleteProduct() {
   let isConfirmed = confirm("Are you sure you want to delete the product?");
 
@@ -318,7 +323,7 @@ function deleteProduct() {
   };
 };
 
-//Deletes whole table
+// Deletes whole table
 const resetTable = () => {
   let isConfirmed = confirm("Are you sure you want to reset the database?");
 
