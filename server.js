@@ -7,7 +7,7 @@ const app = express();
 const db = createDatabase("./products.db");
 const PORT = process.env.PORT || 3000;
 
-//Change origin to host of the website
+// Change origin to host of the website
 const corsOptions = {
   origin: "http://localhost:5500"
 };
@@ -15,15 +15,15 @@ const corsOptions = {
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
-//Use this to include static files (CSS and JS)
+// Use this to include static files (CSS and JS)
 app.use(express.static(__dirname + "/client"));
 
-//Use this to serve the client website (prevents refreshing)
+// Use this to serve the client website (prevents refreshing)
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/client/index.html");
 });
 
-//For documentation visit /docs
+// For documentation visit /docs
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
 });
