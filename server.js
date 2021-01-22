@@ -15,26 +15,35 @@ const corsOptions = {
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
-// Use this to include static files (CSS and JS)
+//Use this to include static files (CSS and JS)
 app.use(express.static(__dirname + "/client"));
 
-// Use this to serve the client website (prevents refreshing)
+//Use this to serve the client website (prevents refreshing)
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/client/index.html");
 });
 
+//For documentation visit /docs
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
 });
 
-app.get("/products", (req, res) => {
-	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", (err, rows) => {
+app.post("/products", (req, res) => {
+  let item = req.body;
+
+  if (!item["product"] || !item["origin"] || !item["best_before_date"] || !item["amount"] || !item["image"]) {
+    return res.status(400).send("400 Bad request");
+  }
+
+	db.run(`INSERT INTO products (product, origin, best_before_date, amount, image)
+	VALUES (?, ?, ?, ?, ?)`,
+	[item["product"], item["origin"], item["best_before_date"], item["amount"],  item["image"]], (err, rows) => {
     if (err) {
       console.error(err.message);
-      return res.status(500).send("500 Error retrieving products from database");
+      return res.status(500).send("500 Error inserting product into the database.");
     }
 
-    return res.status(200).json(rows);;
+    return res.status(201).send("201 Created");
 	});
 });
 
@@ -54,22 +63,14 @@ app.get("/products/:id", (req, res) => {
 	});
 });
 
-app.post("/products", (req, res) => {
-  let item = req.body;
-
-  if (!item["product"] || !item["origin"] || !item["best_before_date"] || !item["amount"] || !item["image"]) {
-    return res.status(400).send("400 Bad request");
-  }
-
-	db.run(`INSERT INTO products (product, origin, best_before_date, amount, image)
-	VALUES (?, ?, ?, ?, ?)`,
-	[item["product"], item["origin"], item["best_before_date"], item["amount"],  item["image"]], (err, rows) => {
+app.get("/products", (req, res) => {
+	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", (err, rows) => {
     if (err) {
       console.error(err.message);
-      return res.status(500).send("500 Error inserting product into the database.");
+      return res.status(500).send("500 Error retrieving products from database");
     }
 
-    return res.status(201).send("201 Created");
+    return res.status(200).json(rows);;
 	});
 });
 
@@ -100,17 +101,6 @@ app.put("/products", (req, res) => {
   });
 });
 
-app.get("/reset", (req, res) => {
-  db.run("DELETE FROM products", (err, rows) => {
-    if (err) {
-      console.error(err.message);
-      return res.status(500).send("500 Error deleting products from the database.\n" + err);
-    }
-
-    return res.status(204).send("204 No Content");
-	});
-});
-
 app.delete("/products/:id", (req, res) => {
   let id = req.params.id;
 
@@ -133,6 +123,17 @@ app.delete("/products/:id", (req, res) => {
       });
     }
   });
+});
+
+app.get("/reset", (req, res) => {
+  db.run("DELETE FROM products", (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      return res.status(500).send("500 Error deleting products from the database.\n" + err);
+    }
+
+    return res.status(204).send("204 No Content");
+	});
 });
 
 app.listen(PORT, () => {
