@@ -1,7 +1,3 @@
-// https://www.sqlitetutorial.net/sqlite-nodejs/
-//TODO: FIX EDITING OR ADD IT AS SEPERATE FORM WITH ID AS WELL
-//TODO: MAKE CODE PRETTY AND DELETE WHAT IS NOT NEEDED
-//TODO: add comment at submission that when on same host it doesnt refresh
 const sqlite = require("sqlite3").verbose();
 const express = require("express");
 const cors = require("cors")
@@ -17,29 +13,29 @@ const corsOptions = {
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
-/// Add this for serving the client website (prevents refreshing)
-
+// Use this to include static files (CSS and JS)
 app.use(express.static(__dirname + "/client"));
 
+// Serve the client website (prevents refreshing)
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/client/index.html");
-})
+});
 
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
-})
+});
 
 app.get("/products", (req, res) => {
 	db.all("SELECT id, product, origin, best_before_date, amount, image FROM products", (err, rows) => {
     if (err) {
-      console.error(err.message);
+      console.error(err);
       return res.status(500).send("500 Error retrieving products from database");
     }
     res.status(200);
     res.json(rows);
 
     return res;
-	})
+	});
 });
 
 app.get("/products/:id", (req, res) => {
@@ -56,7 +52,7 @@ app.get("/products/:id", (req, res) => {
     res.status(200);
     
     return res.json(rows[0]);
-	})
+	});
 });
 
 app.post("/products", (req, res) => {
@@ -105,7 +101,7 @@ app.put("/products", (req, res) => {
           return res.status(200).send("200 OK");
       });
     }
-  })
+  });
 });
 
 app.get("/reset", (req, res) => {
