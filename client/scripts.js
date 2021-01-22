@@ -283,6 +283,7 @@ function updateProduct() {
         </tr>`;
       // TODO: Change update thing back
       $("#edit-inputrow").replaceWith(updatedRow);
+      $(".btn-edit").click(editProduct);
     },
     error: () => {
       alert("Error occurred while updating product");
