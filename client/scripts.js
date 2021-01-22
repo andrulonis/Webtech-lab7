@@ -27,7 +27,7 @@ function searchProduct() {
       };
 
       let row = `
-        <tr>
+        <tr id="search-row">
           <td>${data.id}</td>
           <td>${data.product}</td>
           <td>${data.origin}</td>
@@ -270,6 +270,19 @@ function updateProduct() {
     success: res => {
       console.log(res);
       populate();
+
+      let updatedRow = `
+        <tr>
+          <td>${id}</td>
+          <td>${$("#search-product").val()}</td>
+          <td>${$("#search-origin").val()}</td>
+          <td>${formatDate($("#search-best_before_date").val())}</td>
+          <td>${$("#search-amount").val()}</td>
+          <td><img src="${$("#search-image").val()}" alt="${$("#search-product").val()}"></td>
+          <td class="btn-edit" id="${id}">Edit product</td>
+        </tr>`;
+      // TODO: Change update thing back
+      $("#edit-inputrow").replaceWith(updatedRow);
     },
     error: () => {
       alert("Error occurred while updating product");
