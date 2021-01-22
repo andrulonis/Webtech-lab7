@@ -13,38 +13,42 @@ $(document).ready(() => {
 
 function searchProduct() {
   let search_id = $(".searchbar").val();
-  
-  $.ajax({
-    url: `http://localhost:3000/products/${search_id}`,
-    type: "GET",
-    success: data => {
-      let $tbody = $("#table-search > tbody");
-      let rowCount = $("#table-search tr").length;
-      let table = document.getElementById("table-search");
+  if (!search_id) {
+    alert("Please enter an ID");
+  }
+  else {
+    $.ajax({
+      url: `http://localhost:3000/products/${search_id}`,
+      type: "GET",
+      success: data => {
+        let $tbody = $("#table-search > tbody");
+        let rowCount = $("#table-search tr").length;
+        let table = document.getElementById("table-search");
 
-      if (rowCount > 1) {
-        table.deleteRow(1);
-      };
+        if (rowCount > 1) {
+          table.deleteRow(1);
+        };
 
-      let row = `
-        <tr id="search-row">
-          <td>${data.id}</td>
-          <td>${data.product}</td>
-          <td>${data.origin}</td>
-          <td>${data.best_before_date}</td>
-          <td>${data.amount}</td>
-          <td><img src="${data.image}" alt="${data.product}"></td>
-          <td class="btn-edit" id="${data.id}">Edit product</td>
-        </tr>`;
-        
-      $tbody.prepend(row);
-      $($tbody).trigger("update");
-      $(".btn-edit").click(editProduct);
-    },
-    error: () => {
-      alert("Couldn't find product");
-    }
-  });
+        let row = `
+          <tr id="search-row">
+            <td>${data.id}</td>
+            <td>${data.product}</td>
+            <td>${data.origin}</td>
+            <td>${data.best_before_date}</td>
+            <td>${data.amount}</td>
+            <td><img src="${data.image}" alt="${data.product}"></td>
+            <td class="btn-edit" id="${data.id}">Edit product</td>
+          </tr>`;
+          
+        $tbody.prepend(row);
+        $($tbody).trigger("update");
+        $(".btn-edit").click(editProduct);
+      },
+      error: () => {
+        alert("Couldn't find product");
+      }
+    });
+  }
 }
 
 const sortTable = () => {
