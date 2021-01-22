@@ -7,6 +7,7 @@ const app = express();
 const db = createDatabase("./products.db");
 const PORT = process.env.PORT || 3000;
 
+//Change origin to host of the website
 const corsOptions = {
   origin: "http://localhost:5500"
 };
