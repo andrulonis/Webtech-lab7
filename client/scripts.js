@@ -329,8 +329,8 @@ const resetTable = () => {
 
   if (isConfirmed) {
     $.ajax({
-      url: "http://localhost:3000/reset",
-      type: "GET",
+      url: "http://localhost:3000/products",
+      type: "DELETE",
       success: res => {
         console.log(res);
         populate();

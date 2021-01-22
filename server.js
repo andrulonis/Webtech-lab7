@@ -125,7 +125,7 @@ app.delete("/products/:id", (req, res) => {
   });
 });
 
-app.get("/reset", (req, res) => {
+app.delete("products", (req, res) => {
   db.run("DELETE FROM products", (err, rows) => {
     if (err) {
       console.error(err.message);
