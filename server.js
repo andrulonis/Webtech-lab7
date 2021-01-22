@@ -18,7 +18,7 @@ app.use(cors(corsOptions));
 // Use this to include static files (CSS and JS)
 app.use(express.static(__dirname + "/client"));
 
-// Serve the client website (prevents refreshing)
+// Use this to serve the client website (prevents refreshing)
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/client/index.html");
 });
