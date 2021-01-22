@@ -11,6 +11,130 @@ $(document).ready(() => {
   addFormHandler();
 });
 
+const sortTable = () => {
+  $("table").tablesorter({
+    // Sort ascending by default
+    sortInitialOrder: "asc",
+    headers: {
+      // Disable sorter on elements with a "no-sort" class
+      ".no-sort": { 
+        sorter: false 
+      }
+    }
+  });
+};
+
+// Parse date to YYYY-MM-DD
+const parseDate = (str) => {
+  let split = str.split(" ");
+  let month = months.indexOf(split[0]);
+  let year = split[1];
+
+  let date = new Date(year, month);
+  let mm = parseInt(date.getMonth()) + 1;
+  
+  if (parseInt(date.getMonth()) + 1 < 10) {
+    mm = "0" + (date.getMonth() + 1);
+  };
+
+  return `${date.getFullYear()}-${mm}-01`;
+};
+
+const months = [
+  "January", "February", "March", "April", 
+  "May", "June", "July", "August", 
+  "September", "October", "November", "December"
+];
+
+// Format date from "yyyy-mm-dd" to "mmmm yyyy"
+const formatDate = date => {
+  let split = date.split("-");
+  let year = parseInt(split[0]);
+  let month = parseInt(split[1]) - 1; // Remove 1 because JS counts months from 0-11
+
+  return `${months[month]} ${year}`;
+};
+
+// Custom date sorter
+function dateParser() {
+  $.tablesorter.addParser({
+    id: "dates",
+    format: (cellText, table, cell, cellIndex) => {
+      // Do not sort the input row
+      if (cell.parentNode.className != "row-input") {
+        let split = cellText.split(" ");
+        let month = months.indexOf(split[0]);
+        let year = split[1];
+    
+        // Sort by difference in milliseconds since 1970-01-01
+        return new Date(year, month).getTime();
+      };
+    
+      return cellText;
+    },
+    type: "numeric"
+  });
+};
+
+//Provides input for updating product
+function editProduct() {
+  let $originalRow = $(this).parent().clone();
+
+  let inputRow = `
+      <tr id="edit-inputrow">
+        <td id="search-product-id">${$originalRow[0].childNodes[1].textContent}</td>
+        <td><input name="product" id="search-product" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
+        <td><input name="origin" id="search-origin" type="text" value="${$originalRow[0].childNodes[5].textContent}" required></td>
+        <td><input name="best_before_date" id="search-best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[7].textContent)}" required></td>
+        <td><input name="amount" id="search-amount" type="number" min="0" value="${$originalRow[0].childNodes[9].textContent}" required></td>
+        <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[11].childNodes[0].src}" required></td>
+        <td><button type="submit" class="btn-update">Update</button></td>
+        <td class="btn-cancel">Cancel</td>
+      </tr>`;
+
+  let edit_id = $(this).parent().children().last()[0].id;
+  $(this).parent().replaceWith(inputRow);
+
+  // Cancel
+  $(".btn-cancel").click(() => {
+    $("#edit-inputrow").replaceWith($originalRow);
+    $(".btn-edit").click(editProduct);
+  });
+};
+
+//Creates a product
+function addFormHandler() {
+  const form = document.getElementById("form-featured");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    let requestData = {
+      product: $("#product").val(),
+      origin: $("#origin").val(),
+      best_before_date: formatDate($("#best_before_date").val()),
+      amount: $("#amount").val(),
+      image: $("#image").val()
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/products",
+      data: JSON.stringify(requestData),
+      contentType: "application/json",
+      success: () => {
+        console.log("Submission successful");
+        populate();
+      },
+      error: (e) => {
+        console.error(JSON.stringify(e));
+        alert("Error in submission");
+      }
+    });
+  });
+};
+
+//Retrieves a product of specific ID
 function searchProduct() {
   let search_id = $(".searchbar").val();
   if (!search_id) {
@@ -48,22 +172,10 @@ function searchProduct() {
         alert("Couldn't find product");
       }
     });
-  }
-}
-
-const sortTable = () => {
-  $("table").tablesorter({
-    // Sort ascending by default
-    sortInitialOrder: "asc",
-    headers: {
-      // Disable sorter on elements with a "no-sort" class
-      ".no-sort": { 
-        sorter: false 
-      }
-    }
-  });
+  };
 };
 
+//Retrieves whole table
 function populate() {
   $.ajax({
     url: "http://localhost:3000/products",
@@ -104,156 +216,7 @@ function populate() {
   });
 };
 
-function editProduct() {
-  let $originalRow = $(this).parent().clone();
-
-  let inputRow = `
-      <tr id="edit-inputrow">
-        <td id="search-product-id">${$originalRow[0].childNodes[1].textContent}</td>
-        <td><input name="product" id="search-product" type="text" value="${$originalRow[0].childNodes[3].textContent}" required></td>
-        <td><input name="origin" id="search-origin" type="text" value="${$originalRow[0].childNodes[5].textContent}" required></td>
-        <td><input name="best_before_date" id="search-best_before_date" type="date" value="${parseDate($originalRow[0].childNodes[7].textContent)}" required></td>
-        <td><input name="amount" id="search-amount" type="number" min="0" value="${$originalRow[0].childNodes[9].textContent}" required></td>
-        <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[11].childNodes[0].src}" required></td>
-        <td><button type="submit" class="btn-update">Update</button></td>
-        <td class="btn-cancel">Cancel</td>
-      </tr>`;
-
-  let edit_id = $(this).parent().children().last()[0].id;
-  $(this).parent().replaceWith(inputRow);
-
-  // Cancel
-  $(".btn-cancel").click(() => {
-    $("#edit-inputrow").replaceWith($originalRow);
-    $(".btn-edit").click(editProduct);
-  })
-
-  /*$(".btn-update").click(() => {
-    updateProduct(edit_id);
-    //$(".btn-edit").click(editProduct); TODO: PROB DELETE THIS LINE
-  })*/
-}
-
-// Parse date to YYYY-MM-DD
-const parseDate = (str) => {
-  let split = str.split(" ");
-  let month = months.indexOf(split[0]);
-  let year = split[1];
-
-  let date = new Date(year, month);
-  let mm = parseInt(date.getMonth()) + 1;
-  
-  if (parseInt(date.getMonth()) + 1 < 10) {
-    mm = "0" + (date.getMonth() + 1);
-  }
-
-  return `${date.getFullYear()}-${mm}-01`;
-}
-
-const resetTable = () => {
-  let isConfirmed = confirm("Are you sure you want to reset the database?");
-
-  if (isConfirmed) {
-    $.ajax({
-      url: "http://localhost:3000/reset",
-      type: "GET",
-      success: res => {
-        console.log(res);
-        populate();
-      },
-      error: () => {
-        alert("Error occurred while resetting database");
-      }
-    });
-  };
-};
-
-const months = [
-  "January", "February", "March", "April", 
-  "May", "June", "July", "August", 
-  "September", "October", "November", "December"
-];
-
-// Format date from "yyyy-mm-dd" to "mmmm yyyy"
-const formatDate = date => {
-  let split = date.split("-");
-  let year = parseInt(split[0]);
-  let month = parseInt(split[1]) - 1; // Remove 1 because JS counts months from 0-11
-
-  return `${months[month]} ${year}`;
-}
-
-function addFormHandler() {
-  const form = document.getElementById("form-featured");
-
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-
-    let requestData = {
-      product: $("#product").val(),
-      origin: $("#origin").val(),
-      best_before_date: formatDate($("#best_before_date").val()),
-      amount: $("#amount").val(),
-      image: $("#image").val()
-    };
-
-    $.ajax({
-      type: "POST",
-      url: "http://localhost:3000/products",
-      data: JSON.stringify(requestData),
-      contentType: "application/json",
-      success: () => {
-        console.log("Submission successful");
-        populate();
-      },
-      error: (e) => {
-        console.error(JSON.stringify(e));
-        alert("Error in submission");
-      }
-    });
-  });
-};
-
-// Custom date sorter
-function dateParser() {
-  $.tablesorter.addParser({
-    id: "dates",
-    format: (cellText, table, cell, cellIndex) => {
-      // Do not sort the input row
-      if (cell.parentNode.className != "row-input") {
-        let split = cellText.split(" ");
-        let month = months.indexOf(split[0]);
-        let year = split[1];
-    
-        // Sort by difference in milliseconds since 1970-01-01
-        return new Date(year, month).getTime();
-      };
-    
-      return cellText;
-    },
-    type: "numeric"
-  });
-};
-
-//Deletes a product of specific ID
-function deleteProduct() {
-  let isConfirmed = confirm("Are you sure you want to delete the product?");
-
-  if (isConfirmed) {
-    $.ajax({
-      url: `http://localhost:3000/products/${this.id}`,
-      type: "DELETE",
-      success: res => {
-        console.log(res);
-        populate();
-      },
-      error: () => {
-        alert("Error occurred while deleting product");
-      }
-    });
-  };
-}
-
+//Updates a product of specific ID
 function updateProduct() {
   let id = parseInt($("#search-product-id")[0].textContent);
 
@@ -264,7 +227,7 @@ function updateProduct() {
     best_before_date: formatDate($("#search-best_before_date").val()),
     amount: $("#search-amount").val(),
     image: $("#search-image").val()
-  }
+  };
 
   $.ajax({
     url: "http://localhost:3000/products/",
@@ -285,7 +248,7 @@ function updateProduct() {
           <td><img src="${$("#search-image").val()}" alt="${$("#search-product").val()}"></td>
           <td class="btn-edit" id="${id}">Edit product</td>
         </tr>`;
-      // TODO: Change update thing back
+
       $("#edit-inputrow").replaceWith(updatedRow);
       $(".btn-edit").click(editProduct);
     },
@@ -294,3 +257,82 @@ function updateProduct() {
     }
   });
 }
+
+//Search a product by specific
+function searchProduct() {
+  let search_id = $(".searchbar").val();
+  if (!search_id) {
+    alert("Please enter an ID");
+  }
+  else {
+    $.ajax({
+      url: `http://localhost:3000/products/${search_id}`,
+      type: "GET",
+      success: data => {
+        let $tbody = $("#table-search > tbody");
+        let rowCount = $("#table-search tr").length;
+        let table = document.getElementById("table-search");
+
+        if (rowCount > 1) {
+          table.deleteRow(1);
+        };
+
+        let row = `
+          <tr id="search-row">
+            <td>${data.id}</td>
+            <td>${data.product}</td>
+            <td>${data.origin}</td>
+            <td>${data.best_before_date}</td>
+            <td>${data.amount}</td>
+            <td><img src="${data.image}" alt="${data.product}"></td>
+            <td class="btn-edit" id="${data.id}">Edit product</td>
+          </tr>`;
+          
+        $tbody.prepend(row);
+        $($tbody).trigger("update");
+        $(".btn-edit").click(editProduct);
+      },
+      error: () => {
+        alert("Couldn't find product");
+      }
+    });
+  };
+};
+
+//Deletes a product of specific ID
+function deleteProduct() {
+  let isConfirmed = confirm("Are you sure you want to delete the product?");
+
+  if (isConfirmed) {
+    $.ajax({
+      url: `http://localhost:3000/products/${this.id}`,
+      type: "DELETE",
+      success: res => {
+        console.log(res);
+        populate();
+      },
+      error: () => {
+        alert("Error occurred while deleting product");
+      }
+    });
+  };
+};
+
+//Deletes whole table
+const resetTable = () => {
+  let isConfirmed = confirm("Are you sure you want to reset the database?");
+
+  if (isConfirmed) {
+    $.ajax({
+      url: "http://localhost:3000/reset",
+      type: "GET",
+      success: res => {
+        console.log(res);
+        populate();
+      },
+      error: () => {
+        alert("Error occurred while resetting database");
+      }
+    });
+  };
+};

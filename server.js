@@ -1,10 +1,6 @@
-// https://www.sqlitetutorial.net/sqlite-nodejs/
-//TODO: FIX EDITING OR ADD IT AS SEPERATE FORM WITH ID AS WELL
-//TODO: MAKE CODE PRETTY AND DELETE WHAT IS NOT NEEDED
-//TODO: add comment at submission that when on same host it doesnt refresh
 const sqlite = require("sqlite3").verbose();
 const express = require("express");
-const cors = require("cors")
+const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -17,13 +13,16 @@ const corsOptions = {
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
-/// Add this for serving the client website (prevents refreshing)
+// Uncomment part below for serving the website from same host as server (prevents refreshing)
 
-app.use(express.static(__dirname + "/client"));
+/*app.use(express.static(__dirname + "/client"));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/client/index.html");
-})
+})*/
+
+
+// For documentation, use /docs
 
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
@@ -145,17 +144,17 @@ app.delete("/products/:id", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
   console.info(`Listening on http://localhost:${PORT}...`);
 });
 
 // === DATABASE === //
+
 function createDatabase(filename) {
 	var db = new sqlite.Database(filename, (err) => {
     if (err) {
       console.error(err.message);
-    }
+    };
 
     console.log("Connected to the products database.");
   });
