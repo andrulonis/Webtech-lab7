@@ -31,6 +31,26 @@
     <h2>Introduction</h2>
     <h2>Accessibility Highlights</h2>
     <h2>Improvement Plan</h2>
+    <dl>
+      <dt>Addition of list-style-type</dt>
+      <dd>
+        Due to this small overlook on our side, we can easily add this in CSS to existing table. 
+        An examplary solution would be a type of numeration added to one of the present lsits on the page.
+      </dd>
+      <dt>Correcting print style</dt>
+      <dd>
+        Print style has three main issues: too much empty space, scroll bars are visible and form is not deleted.
+        Empty space could be fixed looking at the rules of <code>page-break</code> in CSS file. 
+        We would also need to hide the scroll bars and form in <code>@media print</code> using <code>display: none</code>
+      </dd>
+      <dt>Responsive table</dt>
+      <dd>
+        This problem touches the screen users. The table does not flip and does not become vertical 
+        but rather changes into being scrollable sideways. We thought initially that was a good solution 
+        but in order to make the whole page responsive, we would need to flip the table for screen users. 
+        For this we would need to 
+      </dd>
+    </dl>
     
     <h2>Appendix</h2>
     <table>
@@ -58,7 +78,7 @@
       <tr>
         <td>Code in both HTML and CSS are written neatly with good structure and are after successful validator check</td>
         <td>Most of the page is responsive and looks good on smaller screen sizes</td>
-        <td>Table is not done according to responsive design - it is scrollable</td>
+        <td>Table is not done according to responsive design of collapsing</td>
       </tr>
     </table>
   </body>
