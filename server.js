@@ -28,6 +28,10 @@ app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/documentation.html");
 });
 
+app.get("/evaluation", (req, res) => {
+  res.sendFile(__dirname + "/evaluation.html");
+});
+
 app.post("/products", (req, res) => {
   let item = req.body;
 
