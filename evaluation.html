@@ -31,7 +31,7 @@
         border-width: 1px;
         border-style: solid;
         border-collapse: collapse;
-        text-align: left;
+        text-align: justify;
         padding: 5px;
       }
     </style>
@@ -52,7 +52,7 @@
         <li><a href="#highlights">Accessibility Highlights</a></li>
         <li><a href="#plan">Improvement Plan</a></li>
         <li>
-          <a href="#appendices">Appendices</a>
+          <a href="#appendices">Appendix</a>
           <ul>
             <li><a href="#appendices-a">Appendix A</a></li>
             <li><a href="#appendices-b">Appendix B</a></li>
@@ -65,9 +65,9 @@
       <h2>Introduction</h2>
       <p>
         Bedrunka’s homepage includes featured products, a searchbar to find a product and a few recipes for the user to try out. The page is designed with responsiveness in mind, so that the page is accessible on any resolution. Interactive buttons have descriptive text and a matching color, so it is clear what it does.<br><br>
-        Users can add, edit, or delete products and if the user wants to find a specific product, he/she/other can search for a product by id.<br><br>
+        Users can add, edit, or delete products and if the user wants to find a specific product, one can search for a product by id.<br><br>
         All sections are seperated by a descriptive header and are easy to find by using the navigation bar on top which contains links to each section.<br><br>
-        The page does not contain audio and can be printed for essential information which is shown is the page.
+        The page does not contain audio and can be printed for essential information, which is shown is the page.
       </p>
     </section>
 
@@ -76,7 +76,7 @@
       <p>
         We want our page to be accessible to as many users as possible and therefore we can use the Web Content Accessibility Guidelines (WCAG) 2.0 to make sure this requirement is met.<br><br>
         The most important guideline is that all pieces of content should be easy to find on the page (2.4). If the user is unable to find something because of poor navigation or unclear design the user will likely not stay around and go to an alternative website.<br><br>
-        Secondly, mobile browsers have surpassed desktop browsers in popularity, thus the web page should be viewable on more than one device, resolution, or aspect ratio (1.3). The webpage should be responsive to different layouts so a user who uses a desktop, mobile phone, or someone who wants to print the page can all view the website’s most important details.
+        Secondly, mobile browsers have surpassed desktop browsers in popularity, thus the web page should be viewable on more than one device, resolution, or aspect ratio (1.3). The webpage should be responsive to different layouts, so a user who uses a desktop, mobile phone, or someone who wants to print the page, can all view the website’s most important details.
       </p>
     </section>
 
@@ -105,7 +105,7 @@
     </section>
 
     <section id="appendices">
-      <h2>Appendices</h2>
+      <h2>Appendix</h2>
       <table id="appendices-a">
         <caption>Appendix A - Web Content Accessibility Guidelines</caption>
         <thead>
@@ -121,7 +121,7 @@
           <tr>
             <td>1.1</td>
             <td>
-              Guideline 1.1 states that all non-text context that is presented to the user should have an alternative. Bedrunka makes use of alternative text for every image on the page and descriptive names for buttons and input fields.<br><br>
+              Guideline 1.1 states that all non-text content that is presented to the user should have an alternative. Bedrunka makes use of alternative text for every image on the page and descriptive names for buttons and input fields.<br><br>
               According to this guideline, all non-text content which is used only for decorative purposes should be implemented in a way it can be ignored by assistive technology. However, the header image and decorative ASCII art are still visible on assistive technology.<br><br>
               Bedrunka does not provide time-based media, tests, sensory input, or CAPTCHA.
             </td>
@@ -139,7 +139,7 @@
               Text is not justified and visible on 200 percent zoom without assistive technology, but the tables are only fully visible with horizontal scroll. The product returned from the search bar, however, does not provide a scrollbar and therefore the product is not entirely visible on 200 percent zoom.<br><br>
               No images of text are used to convey information except for any logos and there is no background audio.<br><br>
               No technique is used in CSS to ensure line spacing is at least space-and-a-half within paragraphs, and at least 1.5 times larger than the line spacing.<br><br>
-              Foreground and background colors cannot be selected by the user and Bedrunka does provide column widths of over 80 characters.
+              Foreground and background colours cannot be selected by the user and Bedrunka does provide column widths of over 80 characters.
             </td>
           </tr>
           <tr>
@@ -148,14 +148,14 @@
           <tr>
             <td>2.1</td>
             <td>
-              All Bedrunka’s functionality should be accessible by keyboard but fails to comply as a user is unable to delete a product, reset data, or edit a product using the keyboard only. Sorting a table, searching a product or adding one is keyboard accessible without requiring specific timings for individual keystrokes.<br><br>
-              It is always possible for the user to unfocus when focussing an element using the keyboard, thus there is no keyboard trap.
+              All Bedrunka’s functionality should be accessible by keyboard but fails to comply as a user is unable to delete a product, reset data, or edit a product using the keyboard only. Sorting a table, searching a product or adding one is keyboard-accessible without requiring specific timings for individual keystrokes.<br><br>
+              It is always possible for the user to unfocus when focusing an element using the keyboard, thus there is no keyboard trap.
             </td>
           </tr>
           <tr>
             <td>2.4</td>
             <td>
-              All Bedrunka’s web pages, including the Bedrunka API provide a descriptive title, including Bedrunka’s brand name.<br><br>
+              All Bedrunka’s web pages, including the Bedrunka API, provide a descriptive title, including Bedrunka’s brand name.<br><br>
               Navigation links are provided at the top of the page to skip blocks of content. The content itself is displayed in order and therefore the page can be navigated in a sequential focus order.<br><br>
               Links provide descriptive text, so it is easy for the user to understand what it links to. Besides this, the user can also visit almost any part of the website using the correct URL by manually scrolling to it. Searching for a product and editing one are the only processes on our website. The user is not able to locate the result of every product unless a search is performed, and you can only update a product or cancel this process after the user has pressed the Edit Product button.<br><br>
               All headings and input labels are descriptive and are used to organize content. Keyboard focus indicators are visible where necessary and links are visible at any time and the user can always deduct the purpose of the link before using it.
