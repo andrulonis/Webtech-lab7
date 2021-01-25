@@ -93,7 +93,7 @@ function editProduct() {
         <td><input name="amount" id="search-amount" type="number" min="0" value="${$originalRow[0].childNodes[9].textContent}" required></td>
         <td><input name="image" id="search-image" type="url" value="${$originalRow[0].childNodes[11].childNodes[0].src}" required></td>
         <td><button type="submit" class="btn-update">Update</button></td>
-        <td class="btn-cancel">Cancel</td>
+        <td class="btn-cancel"><button>Cancel</button></td>
       </tr>`;
 
   let edit_id = $(this).parent().children().last()[0].id;
@@ -166,7 +166,7 @@ function searchProduct() {
             <td>${data.best_before_date}</td>
             <td>${data.amount}</td>
             <td><img src="${data.image}" alt="${data.product}"></td>
-            <td class="btn-edit" id="${data.id}">Edit product</td>
+            <td class="btn-edit" id="${data.id}"><button>Edit product</button></td>
           </tr>`;
           
         $tbody.prepend(row);
@@ -203,7 +203,7 @@ function populate() {
             <td>${data[i].best_before_date}</td>
             <td>${data[i].amount}</td>
             <td><img src="${data[i].image}" alt="${data[i].product}"></td>
-            <td class="btn-delete" id="${data[i].id}">Delete product</td>
+            <td class="btn-delete" id="${data[i].id}"><button>Delete product</button></td>
           </tr>`;
         
         $tbody.prepend(row);
@@ -251,7 +251,7 @@ function updateProduct() {
           <td>${formatDate($("#search-best_before_date").val())}</td>
           <td>${$("#search-amount").val()}</td>
           <td><img src="${$("#search-image").val()}" alt="${$("#search-product").val()}"></td>
-          <td class="btn-edit" id="${id}">Edit product</td>
+          <td class="btn-edit" id="${id}"><button>Edit product</button></td>
         </tr>`;
 
       $("#edit-inputrow").replaceWith(updatedRow);
@@ -290,7 +290,7 @@ function searchProduct() {
             <td>${data.best_before_date}</td>
             <td>${data.amount}</td>
             <td><img src="${data.image}" alt="${data.product}"></td>
-            <td class="btn-edit" id="${data.id}">Edit product</td>
+            <td class="btn-edit" id="${data.id}"><button>Edit product</button></td>
           </tr>`;
           
         $tbody.prepend(row);
