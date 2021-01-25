@@ -14,6 +14,10 @@
         max-width: 800px;
       }
 
+      dt {
+        font-weight: bold;
+      }
+
       table {
         margin-bottom: 20px;
       }
@@ -83,6 +87,26 @@
     <section id="plan">
       <h2>Improvement Plan</h2>
       <dl>
+        <dt>Remove decorative content when using assistive technology</dt>
+        <dd>
+          Remove header image and ASCII art from other media types using CSS media queries.
+        </dd>
+
+        <dt>Line-spacing</dt>
+        <dd>
+          Line spacing (leading) should be at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5 times larger than the line spacing. This can be achieved by adding <code>line-height: 150%</code> in CSS for every text element.
+        </dd>
+
+        <dt>Selectable foreground and background colors</dt>
+        <dd>
+          Users should be able to select foreground and background colors. This can be achieved by only specifying a CSS color for secondary content such as banners, features, and navigation.
+        </dd>
+
+        <dt>Not everything is accessible by keyboard</dt>
+        <dd>
+          All functionality of the content should be operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
+        </dd>
+
         <dt>Addition of list-style-type</dt>
         <dd>
           Due to this small overlook on our side, we can easily add this in CSS to existing table. 
@@ -107,7 +131,7 @@
     <section id="appendices">
       <h2>Appendices</h2>
       <table id="appendices-a">
-        <caption>Appendix A - Web Content Accessibility Guidelines</caption>
+        <caption>Appendix A - <a href="http://www.w3.org/TR/WCAG20/" target="_blank">Web Content Accessibility Guidelines</a></caption>
         <thead>
           <tr>
             <th>&sect;</th>
@@ -135,11 +159,11 @@
           <tr>
             <td>1.4</td>
             <td>
-              Bedrunka makes it easy for the users to distinguish content from the background by providing enough contrast in color. Only the “Delete Product” and “Reset Data” buttons do not provide enhanced contrast according to level AAA.<br><br>
-              Text is not justified and visible on 200 percent zoom without assistive technology, but the tables are only fully visible with horizontal scroll. The product returned from the search bar, however, does not provide a scrollbar and therefore the product is not entirely visible on 200 percent zoom.<br><br>
-              No images of text are used to convey information except for any logos and there is no background audio.<br><br>
-              No technique is used in CSS to ensure line spacing is at least space-and-a-half within paragraphs, and at least 1.5 times larger than the line spacing.<br><br>
-              Foreground and background colors cannot be selected by the user and Bedrunka does provide column widths of over 80 characters.
+              Bedrunka makes it easy for the users to distinguish content from the background by providing enough contrast in color (AA). Only the “Delete Product” and “Reset Data” buttons do not provide enhanced contrast according to Level AAA.<br><br>
+              Text is not justified and visible on 200 percent zoom without assistive technology, but the tables are only fully visible with horizontal scroll. The product returned from the search bar, however, does not provide a scrollbar and therefore the product is not entirely visible on 200 percent zoom. (AA)<br><br>
+              No images of text are used to convey information except for any logos and there is no background audio. (AA)<br><br>
+              No technique is used in CSS to ensure line spacing is at least space-and-a-half within paragraphs, and at least 1.5 times larger than the line spacing. (AAA)<br><br>
+              Foreground and background colors cannot be selected by the user and Bedrunka does provide responsive text such that no horizontal scrolling will occur. (AAA)
             </td>
           </tr>
           <tr>
@@ -148,7 +172,7 @@
           <tr>
             <td>2.1</td>
             <td>
-              All Bedrunka’s functionality should be accessible by keyboard but fails to comply as a user is unable to delete a product, reset data, or edit a product using the keyboard only. Sorting a table, searching a product or adding one is keyboard accessible without requiring specific timings for individual keystrokes.<br><br>
+              All Bedrunka’s functionality should be accessible by keyboard but fails to comply as a user is unable to delete a product, reset data, or edit a product using the keyboard only. Sorting a table, searching a product or adding one is keyboard accessible without requiring specific timings for individual keystrokes. (AAA)<br><br>
               It is always possible for the user to unfocus when focussing an element using the keyboard, thus there is no keyboard trap.
             </td>
           </tr>
@@ -157,8 +181,8 @@
             <td>
               All Bedrunka’s web pages, including the Bedrunka API provide a descriptive title, including Bedrunka’s brand name.<br><br>
               Navigation links are provided at the top of the page to skip blocks of content. The content itself is displayed in order and therefore the page can be navigated in a sequential focus order.<br><br>
-              Links provide descriptive text, so it is easy for the user to understand what it links to. Besides this, the user can also visit almost any part of the website using the correct URL by manually scrolling to it. Searching for a product and editing one are the only processes on our website. The user is not able to locate the result of every product unless a search is performed, and you can only update a product or cancel this process after the user has pressed the Edit Product button.<br><br>
-              All headings and input labels are descriptive and are used to organize content. Keyboard focus indicators are visible where necessary and links are visible at any time and the user can always deduct the purpose of the link before using it.
+              Links provide descriptive text, so it is easy for the user to understand what it links to (AAA). Besides this, the user can also visit almost any part of the website using the correct URL (AAA) by manually scrolling to it (AA). Searching for a product and editing one are the only processes on our website. The user is not able to locate the result of every product unless a search is performed, and you can only update a product or cancel this process after the user has pressed the Edit Product button.<br><br>
+              All headings and input labels are descriptive and are used to organize content (AA & AAA). Keyboard focus indicators are visible where necessary and links are visible at any time and the user can always deduct the purpose of the link before using it. (AA)
             </td>
           </tr>
         </tbody>
