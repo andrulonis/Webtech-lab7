@@ -1,3 +1,4 @@
+<!--TODO: ask about the responsivness and show W3 -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -69,10 +70,11 @@
     <section id="introduction">
       <h2>Introduction</h2>
       <p>
-        Bedrunka’s homepage includes featured products, a searchbar to find a product and a few recipes for the user to try out. The page is designed with responsiveness in mind, so that the page is accessible on any resolution. Interactive buttons have descriptive text and a matching color, so it is clear what it does.<br><br>
+        Bedrunka’s homepage includes featured products, a searchbar to find a product and a few recipes for the user to try out. The page is designed with responsiveness in mind, so that the page is accessible on any resolution. Interactive buttons have descriptive text and a matching colour, so it is clear what it does.<br><br>
         Users can add, edit, or delete products and if the user wants to find a specific product, one can search for a product by id.<br><br>
-        All sections are seperated by a descriptive header and are easy to find by using the navigation bar on top which contains links to each section.<br><br>
-        The page does not contain audio and can be printed for essential information, which is shown is the page.
+        All sections are separated by a descriptive header and are easy to find by using the navigation bar on top which contains links to each section.<br><br>
+        The page does not contain audio and can be printed for essential information, which is shown on the page.<br><br>
+        Whole page was craeted by two students in just under a month of time. Limitations were that we had to learn and build the page from the scratch using the basics of our knowledge. The impact of it is that maybe the page does not look the best or could be improved in some aspects, but the page works correctly and is quite well done for such a short time period.
       </p>
     </section>
 
@@ -94,39 +96,46 @@
           Remove header image and ASCII art from other media types using CSS media queries.
         </dd>
         <dt>Increase contrast</dt>
-        <dd>Increase contrast for "Reset Data" and "Add Product" buttons to comply with Level AAA.</dd>
+        <dd>Increase contrast for "Reset Data" and "Add Product" buttons to comply with Level AAA. For this we will use colour picker.</dd>
         <dt>Line-spacing</dt>
         <dd>
           Line spacing (leading) should be at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5 times larger than the line spacing. This can be achieved by adding <code>line-height: 150%</code> in CSS for every text element.
         </dd>
 
-        <dt>Selectable foreground and background colors</dt>
+        <dt>Selectable foreground and background colours</dt>
         <dd>
-          Users should be able to select foreground and background colors. This can be achieved by only specifying a CSS color for secondary content such as banners, features, and navigation.
+          Users should be able to select foreground and background colours. This can be achieved by only 
+          specifying a CSS colour for secondary content such as banners, features, and navigation.
         </dd>
 
         <dt>Not everything is accessible by keyboard</dt>
         <dd>
-          All functionality of the content should be operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
+          All functionality of the content should be operable through a keyboard interface without 
+          requiring specific timings for individual keystrokes, except where the underlying function 
+          requires input that depends on the path of the user's movement and not just the endpoints. 
+          Issue seems to be laying on the side of buttons that were not actual HTML buttons, that is 
+          why we will change the tags of these for <code>button</code>.
         </dd>
 
         <dt>Addition of list-style-type</dt>
         <dd>
           Due to this small overlook on our side, we can easily add this in CSS to existing table. 
-          An examplary solution would be a type of numeration added to one of the present lsits on the page.
+          An examplary solution would be a type of numeration added to one of the present lists on the page.
         </dd>
         <dt>Correcting print style</dt>
         <dd>
           Print style has three main issues: too much empty space, scroll bars are visible and form is not deleted.
           Empty space could be fixed looking at the rules of <code>page-break</code> in CSS file. 
-          We would also need to hide the scroll bars and form in <code>@media print</code> using <code>display: none</code>
+          We would also need to hide the scroll bars and form in <code>@media print</code> using <code>display: none</code>.
         </dd>
-        <dt>Responsive table</dt>
+        <dt>Responsive table (problem resolved, not for implementation)</dt>
         <dd>
-          This problem touches the screen users. The table does not flip and does not become vertical 
-          but rather changes into being scrollable sideways. We thought initially that was a good solution 
-          but in order to make the whole page responsive, we would need to flip the table for screen users. 
-          For this we would need to 
+          This problem touches the screen users. The table does not flip but rather changes into being scrollable sideways, which was told to us by our TA. He said 
+          that the table should rather collapse, but we still believe it is one of the correct versions 
+          of how one can create a responsive table and by W3 standards, it is also a valid solution. 
+          That is why it is the only part of Improvement plan that we decided not to improve, also because 
+          of the fact that it would be problematic to implement and not get rid of a functionality or 
+          causing the whole code to be overhauled in order to make everything work. 
         </dd>
       </dl>
     </section>
@@ -162,11 +171,11 @@
           <tr>
             <td>1.4</td>
             <td>
-              Bedrunka makes it easy for the users to distinguish content from the background by providing enough contrast in color (AA). Only the “Delete Product” and “Reset Data” buttons do not provide enhanced contrast according to Level AAA.<br><br>
+              Bedrunka makes it easy for the users to distinguish content from the background by providing enough contrast in colour (AA). Only the “Delete Product” and “Reset Data” buttons do not provide enhanced contrast according to Level AAA.<br><br>
               Text is not justified and visible on 200 percent zoom without assistive technology, but the tables are only fully visible with horizontal scroll. The product returned from the search bar, however, does not provide a scrollbar and therefore the product is not entirely visible on 200 percent zoom. (AA)<br><br>
               No images of text are used to convey information except for any logos and there is no background audio. (AA)<br><br>
               No technique is used in CSS to ensure line spacing is at least space-and-a-half within paragraphs, and at least 1.5 times larger than the line spacing. (AAA)<br><br>
-              Foreground and background colors cannot be selected by the user and Bedrunka does provide responsive text such that no horizontal scrolling will occur. (AAA)
+              Foreground and background colours cannot be selected by the user and Bedrunka does provide responsive text such that no horizontal scrolling will occur. (AAA)
             </td>
           </tr>
           <tr>
