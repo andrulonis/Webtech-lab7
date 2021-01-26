@@ -12,14 +12,15 @@ body {
     widows: 2;
   }
 
-  nav { display: none; }
-  #hero { display: none; }
+  nav               { display: none; }
+  #hero             { display: none; }
+  .ascii            { display: none; }
+  .row-input        { display: none; }
+  .btn-delete   { display: none; }
+  .btn-add-product  { display: none; }
+  .btn-reset        { display: none; }
+  #section-search   { display: none; }
   #featured { page-break-after: avoid; }
-  .ascii { display: none; }
-  .row-input { display: none; }
-  .btn-add-product { display: none; }
-  .btn-reset { display: none; }
-  #section-search { display: none; }
 }
 
 /* Line Spacing */
@@ -188,7 +189,7 @@ table {
   overflow-x: scroll;
 }
 
-@media print {
+/*@media print {
   #featured table tr:last-child {
     display: none;
   }
@@ -196,7 +197,7 @@ table {
   #featured table tr:nth-last-child(2) {
     display: none;
   }
-}
+}*/
 
 table, th, td {
   border-width: 1px;
@@ -231,6 +232,7 @@ table th {
   background-color: #ff6060;
   cursor: pointer;
   text-align: center;
+  border: none;
 }
 
 .btn-reset {
