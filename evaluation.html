@@ -72,7 +72,7 @@
         Bedrunka’s homepage includes featured products, a searchbar to find a product and a few recipes for the user to try out. The page is designed with responsiveness in mind, so that the page is accessible on any resolution. Interactive buttons have descriptive text and a matching color, so it is clear what it does.<br><br>
         Users can add, edit, or delete products and if the user wants to find a specific product, one can search for a product by id.<br><br>
         All sections are seperated by a descriptive header and are easy to find by using the navigation bar on top which contains links to each section.<br><br>
-        The page does not contain audio and can be printed for essential information, which is shown is the page.
+        The page does not contain audio and can be printed for essential information, which is shown on the page.
       </p>
     </section>
 
@@ -99,14 +99,19 @@
           Line spacing (leading) should be at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5 times larger than the line spacing. This can be achieved by adding <code>line-height: 150%</code> in CSS for every text element.
         </dd>
 
-        <dt>Selectable foreground and background colors</dt>
+        <dt>Selectable foreground and background colours</dt>
         <dd>
-          Users should be able to select foreground and background colors. This can be achieved by only specifying a CSS color for secondary content such as banners, features, and navigation.
+          Users should be able to select foreground and background colours. This can be achieved by only 
+          specifying a CSS colour for secondary content such as banners, features, and navigation.
         </dd>
 
         <dt>Not everything is accessible by keyboard</dt>
         <dd>
-          All functionality of the content should be operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
+          All functionality of the content should be operable through a keyboard interface without 
+          requiring specific timings for individual keystrokes, except where the underlying function 
+          requires input that depends on the path of the user's movement and not just the endpoints. 
+          Issue seems to be laying on the side of buttons that were not actual HTML buttons, that is 
+          why we will change the tags of these for <code>button</code>.
         </dd>
 
         <dt>Addition of list-style-type</dt>
@@ -118,7 +123,7 @@
         <dd>
           Print style has three main issues: too much empty space, scroll bars are visible and form is not deleted.
           Empty space could be fixed looking at the rules of <code>page-break</code> in CSS file. 
-          We would also need to hide the scroll bars and form in <code>@media print</code> using <code>display: none</code>
+          We would also need to hide the scroll bars and form in <code>@media print</code> using <code>display: none</code>.
         </dd>
         <dt>Responsive table (problem resolved, not for implementation)</dt>
         <dd>
